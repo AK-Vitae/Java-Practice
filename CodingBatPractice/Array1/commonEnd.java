@@ -1,3 +1,4 @@
+//Generates 2 random arrays and sees if the first or last indices of both arrays are equal
 public class commonEnd{
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
