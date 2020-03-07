@@ -1,4 +1,6 @@
-public class canYouVote{
+package ak.conditionals.loops;
+
+public class CanYouVote {
     public static void main(String[] args) {
         double age = Double.parseDouble(args[0]);
         if (age>=18.0) {
