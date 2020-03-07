@@ -1,3 +1,5 @@
+package codingbat.array1;
+
 //Checks array to see if the first or last indices are 6
 public class firstLast6{
     public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package practice.arrays;
 //Takes two randomly filled integer arrays, a and b, and creates an array which is a concatenated with b.
 //Read two arguments from the command line to specify the size of array a and b respectively
 

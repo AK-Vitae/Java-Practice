@@ -1,3 +1,4 @@
+package practice.arrays;
 // Takes an array of integers as a parameter, and prints the average
 
 public class arrayAvg{

@@ -1,3 +1,5 @@
+package codingbat.array1;
+
 //Gets the middle elements of 2 randomly generated(values 1-9) arrays of size n, and prints out their sum
 public class sumMiddleElement{
     public static void main(String[] args) {
@@ -11,7 +13,7 @@ public class sumMiddleElement{
                 a[i] =  (int) (Math.random()*9)+1;
             }
             for (int i = 0; i < n; i++) {
-                b[i] =  ((int) Math.random()*9)+1;
+                b[i] =  (int) (Math.random()*9)+1;
             }
             System.out.println(a[n/2+1]+b[n/2+1]);   
         }

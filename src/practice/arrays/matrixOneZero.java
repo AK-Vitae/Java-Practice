@@ -1,4 +1,5 @@
-//takes a 2D array (this 2D array should be randomly filled with 1s and 0s), and prints: 
+package practice.arrays;
+//takes a 2D array (this 2D array should be randomly filled with 1s and 0s), and prints:
 //How many 1's are in the 2D array. 
 //How many 0's are in the 2D array.
 

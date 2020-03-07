@@ -1,4 +1,4 @@
-package ak.conditionals.loops;
+package practice.conditionals_and_loops;
 
 public class CanYouVote {
     public static void main(String[] args) {

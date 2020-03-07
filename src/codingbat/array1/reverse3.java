@@ -1,3 +1,5 @@
+package codingbat.array1;
+
 //Reverse a command line array of 3
 public class reverse3{
     public static void main(String[] args) {
