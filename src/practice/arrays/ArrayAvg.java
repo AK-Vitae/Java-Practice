@@ -1,7 +1,7 @@
 package practice.arrays;
 // Takes an array of integers as a parameter, and prints the average
 
-public class arrayAvg{
+public class ArrayAvg{
     public static void main(String[] args) {
         double sum = 0;
         for (int i = 0; i < args.length; i++) {

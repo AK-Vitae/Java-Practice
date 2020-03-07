@@ -1,7 +1,7 @@
 package codingbat.array2;
 
 //Print true if command line values have either 3 even or 3 odd values all next to each other
-public class modThree{
+public class ModThree {
     public static void main(String[] args) {
         boolean a = false;
         if (args.length<3) {

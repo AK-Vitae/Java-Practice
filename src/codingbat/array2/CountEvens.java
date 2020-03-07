@@ -1,7 +1,7 @@
 package codingbat.array2;
 
 //Return the number of even ints in the given array.
-public class countEvens{
+public class CountEvens {
     public static void main(String[] args) {
         int sum = 0;
         for (int i = 0; i < args.length; i++) {

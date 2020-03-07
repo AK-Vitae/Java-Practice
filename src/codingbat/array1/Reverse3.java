@@ -1,7 +1,7 @@
 package codingbat.array1;
 
 //Reverse a command line array of 3
-public class reverse3{
+public class Reverse3 {
     public static void main(String[] args) {
         int a = Integer.parseInt(args[0]);
         int b = Integer.parseInt(args[1]);

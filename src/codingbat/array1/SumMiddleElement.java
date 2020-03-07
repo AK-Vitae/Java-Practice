@@ -1,7 +1,7 @@
 package codingbat.array1;
 
 //Gets the middle elements of 2 randomly generated(values 1-9) arrays of size n, and prints out their sum
-public class sumMiddleElement{
+public class SumMiddleElement {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         if (n%2==0) {

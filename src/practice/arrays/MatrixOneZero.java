@@ -3,7 +3,7 @@ package practice.arrays;
 //How many 1's are in the 2D array. 
 //How many 0's are in the 2D array.
 
-public class matrixOneZero{
+public class MatrixOneZero{
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int m = Integer.parseInt(args[1]);
