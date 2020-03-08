@@ -1,4 +1,7 @@
 package practice.standard_library;
+
+import practice.standard.StdDraw;
+
 //Write a program that uses StdDraw to draw an equilateral triangle with sides of length 1.
 public class DrawEqTriangle {
     public static void main(String[] args) {

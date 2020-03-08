@@ -1,4 +1,6 @@
 package practice.standard_library;
+import practice.standard.StdIn;
+import practice.standard.StdOut;
 // Write a program which implements a Guessing Game.
 // Generate a random int between 1 to 1,000, and prompt the user to try to guess what the number is.
 // As the user enters numbers, the program should tell whether the guess is too high or too low.

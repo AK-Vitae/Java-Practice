@@ -1,5 +1,7 @@
 package practice.standard_library;
 
+import practice.standard.StdDraw;
+
 public class DrawShapes {
     public static void main(String[] args) {
         StdDraw.square(.2,.8,.1);
