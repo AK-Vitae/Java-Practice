@@ -5,22 +5,45 @@ import practice.standard.StdOut;
 
 public class MultiplicationTable {
 
-    public static void printTable(int a) {
+    public static void printTable1(int a) {
         int count = 0;
         if (a<=1) {
             StdOut.println("Please enter an integer larger than 1");
         } else {
             for (int i = 1; i <= a; i++) {
                 for (int j = 1; j <= a; j++) {
-                    System.out.print(i*j + " ");
+                    StdOut.print(i*j + " ");
                 }
                 StdOut.println();
             }
         }
     }
 
+    public static int[][] printTable2(int a) {
+        int[][] table = new int[a][a];
+        for (int row = 0; row <table.length; row++) {
+            for (int col = 0; col < table[row].length; col++) {
+                table[row][col] = (row+1)*(col+1);
+            }
+
+        }
+        return table;
+    }
+
     public static void main(String[] args) {
         int x = StdIn.readInt();
-        printTable(x);
+        printTable1(x);
+        StdOut.println();
+        int[][] test = new int[x][x];
+        test = printTable2(x);
+        for (int row = 0; row < test.length ; row++)
+        {
+            for (int column = 0; column < test[row].length; column++)
+            {
+                StdOut.printf("%2d ",test[row][column]);
+            }
+            StdOut.println();
+
+        }
     }
 }
