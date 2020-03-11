@@ -6,7 +6,9 @@ import practice.standard.StdOut;
 public class WordCount
 {
     public static void main(String [] args){
-        int words = 0, lines = 0, characters = 0;
+        int words = 0;
+        int lines = 0;
+        int characters = 0;
         while (!StdIn.isEmpty()) {
             String line = StdIn.readLine();
             lines++;
