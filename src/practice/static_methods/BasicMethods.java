@@ -1,5 +1,6 @@
 package practice.static_methods;
 
+import practice.standard.StdIn;
 import practice.standard.StdOut;
 
 public class BasicMethods {
@@ -35,10 +36,26 @@ public class BasicMethods {
         for (int i = 1; i < a.length-1; i++) {
             firstName += " " + a[i];
         }
+//        StringBuilder firstName = new StringBuilder(a[0]);
+////        for (int i = 1; i < a.length-1; i++) {
+////            firstName.append(" ").append(a[i]);
+////        }
         StdOut.println(lastName+", "+firstName);
     }
 
     public static void main(String[] args){
-        lastFirst(args);
+        StdOut.println("Please enter 2 double values");
+        double a = StdIn.readDouble();
+        double b = StdIn.readDouble();
+        StdOut.println(average(a,b));
+        StdOut.println("Please enter your first name");
+        String f = StdIn.readString();
+        StdOut.println("Please enter your age");
+        int age = StdIn.readInt();
+        StdOut.println(areYouAnAdult(f,age));
+        StdOut.println("Please enter your last name");
+        String l = StdIn.readString();
+        lastFirst(f,l);
+
     }
 }
