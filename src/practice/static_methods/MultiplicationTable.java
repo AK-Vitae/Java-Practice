@@ -6,7 +6,6 @@ import practice.standard.StdOut;
 public class MultiplicationTable {
 
     public static void printTable1(int a) {
-        int count = 0;
         if (a<=1) {
             StdOut.println("Please enter an integer larger than 1");
         } else {
@@ -34,8 +33,7 @@ public class MultiplicationTable {
         int x = StdIn.readInt();
         printTable1(x);
         StdOut.println();
-        int[][] test = new int[x][x];
-        test = printTable2(x);
+        int[][] test = printTable2(x);
         for (int row = 0; row < test.length ; row++)
         {
             for (int column = 0; column < test[row].length; column++)
