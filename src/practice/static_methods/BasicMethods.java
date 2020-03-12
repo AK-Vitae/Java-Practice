@@ -56,6 +56,5 @@ public class BasicMethods {
         StdOut.println("Please enter your last name");
         String l = StdIn.readString();
         lastFirst(f,l);
-
     }
 }

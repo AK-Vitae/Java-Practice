@@ -43,7 +43,6 @@ public class MultiplicationTable {
                 StdOut.printf("%2d ",test[row][column]);
             }
             StdOut.println();
-
         }
     }
 }
