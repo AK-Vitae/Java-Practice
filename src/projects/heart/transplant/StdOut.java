@@ -1,4 +1,4 @@
-package projects.heart_transplant; /******************************************************************************
+package projects.heart.transplant; /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
  *  Dependencies: none
@@ -6,6 +6,8 @@ package projects.heart_transplant; /********************************************
  *  Writes data of various types to standard output.
  *
  ******************************************************************************/
+
+import introduction.standard.BinaryStdOut;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

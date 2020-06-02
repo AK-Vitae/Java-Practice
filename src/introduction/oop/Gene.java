@@ -1,6 +1,6 @@
 package introduction.oop;
 
-import projects.heart_transplant.StdOut;
+import projects.heart.transplant.StdOut;
 
 /*Determines whether a a DNA string corresponds to a potential gene
         - length is a multiple of 3

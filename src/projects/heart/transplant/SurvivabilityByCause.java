@@ -1,4 +1,4 @@
-package projects.heart_transplant;
+package projects.heart.transplant;
 
 public class SurvivabilityByCause {
 

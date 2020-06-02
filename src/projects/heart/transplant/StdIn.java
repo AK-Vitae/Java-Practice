@@ -1,4 +1,4 @@
-package projects.heart_transplant;
+package projects.heart.transplant;
 /******************************************************************************
  *  Compilation:  javac StdIn.java
  *  Execution:    java StdIn   (interactive test of basic functionality)
@@ -7,6 +7,8 @@ package projects.heart_transplant;
  *  Reads in data of various types from standard input.
  *
  ******************************************************************************/
+
+import introduction.standard.In;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -369,7 +371,7 @@ public final class StdIn {
                                            + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read an 'int' value from standard input, "
+            throw new NoSuchElementException("attempts to read an 'int' value from standard input, "
                                            + "but no more tokens are available");
         }
 

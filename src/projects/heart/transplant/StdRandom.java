@@ -1,4 +1,4 @@
-package projects.heart_transplant; /******************************************************************************
+package projects.heart.transplant; /******************************************************************************
  *  Compilation:  javac StdRandom.java
  *  Execution:    java StdRandom
  *  Dependencies: StdOut.java
