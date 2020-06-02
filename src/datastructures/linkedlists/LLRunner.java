@@ -1,4 +1,4 @@
-package data.structures.linkedlists;
+package datastructures.linkedlists;
 
 public class LLRunner {
 	public static void main(String[] args) {

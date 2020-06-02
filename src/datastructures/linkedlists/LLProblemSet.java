@@ -1,4 +1,4 @@
-package data.structures.linkedlists;
+package datastructures.linkedlists;
 
 public class LLProblemSet {
 	IntNode head;
