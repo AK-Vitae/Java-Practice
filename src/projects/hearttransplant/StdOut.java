@@ -1,4 +1,4 @@
-package projects.heart.transplant; /******************************************************************************
+package projects.hearttransplant; /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
  *  Dependencies: none

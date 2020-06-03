@@ -1,4 +1,4 @@
-package projects.heart.transplant;
+package projects.hearttransplant;
 
 public class  Person {
 
