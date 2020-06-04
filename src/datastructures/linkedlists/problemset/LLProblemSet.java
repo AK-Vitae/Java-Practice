@@ -1,8 +1,10 @@
-package datastructures.linkedlists;
+package datastructures.linkedlists.problemset;
+
+import datastructures.linkedlists.IntNode;
+import datastructures.linkedlists.StringNode;
 
 public class LLProblemSet {
 	IntNode head;
-	StringNode strHead;
 
 	public static void main(String[] args) {
 		// Extra Practice
@@ -50,8 +52,7 @@ public class LLProblemSet {
 		strFront.next = second; // Assign Pointers Manually
 		second.next = third;
 		third.next = fourth;
-		StringNode fifth = new StringNode("K2", null);
-		fourth.next = fifth;
+		fourth.next = new StringNode("K2", null);
 		System.out.println(numberOfOccurrences(strFront, "K2"));
 		System.out.println(displayList(strFront));
 		strFront = deleteAllOccurrences(strFront, "K2");
