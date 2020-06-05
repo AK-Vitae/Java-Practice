@@ -1,29 +1,15 @@
 package datastructures.linkedlists;
 
+import introduction.standard.In;
+
 import java.util.NoSuchElementException;
 
 public class LLInt {
-    public static void main(String[] args) {
-        IntNode front = new IntNode(25, null);
-        System.out.println(front);
-        addInFrontHead(front, 27);
-        insertAfter(front, 25, 13);
-        System.out.println(displayList(front));
-        front = removeHead(front);
-        System.out.println(displayList(front));
-        insertAfter(front, 13, 37);
-        System.out.println(displayList(front));
-		front = remove(front, 27);
-		System.out.println(displayList(front));
-
-        StringNode strFront = new StringNode("Everest", null);
-        System.out.println(strFront);
-
-    }
     // General Method Structure:
     // some pointer to head; ex. current = head
     // searching OR searching+link manipulation
     // return value; usually will be head as you need to keep track of the head
+    // Note: == compares object/reference while .equals() compares content
 
     public static IntNode addInFrontHead(IntNode head, int data) {
         IntNode newNode = new IntNode(data); //Create new node
@@ -41,7 +27,7 @@ public class LLInt {
             current = current.next; // If target is not found current will advance to next node until loop ends
         }
         if (current == null) {
-            return head; // data is not found in linked list
+            return head; // Target is not found in linked list
         }
         IntNode newNode = new IntNode(data);
         newNode.next = current.next; // new Node points to where current is pointing
@@ -49,6 +35,26 @@ public class LLInt {
         return head;
 
     }
+
+    public static IntNode insertBefore(IntNode head, int target, int data) {
+        IntNode current = head;
+        IntNode previous = null;
+        while (current != null && current.data != target) { // Traverse
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) { // Target is not found in linked list
+            return head;
+        }
+        IntNode newNode = new IntNode(data, current); // As current = target, the new Node needs to point to current
+        if (previous == null) { // If new Node is going to be inserted as the new head
+            return newNode;
+        }
+        previous.next = newNode; // Previous now points to the inserted node
+        return head;
+
+    }
+
 
     public static IntNode removeHead(IntNode head) {
         if (head == null) {
@@ -72,19 +78,49 @@ public class LLInt {
             current = current.next;
         }
         if (current != null) {
-        	previous.next = current.next; // Removes link to removed node
-		}
+            previous.next = current.next; // Removes link to removed node
+        }
+        return head;
+    }
+
+    public static IntNode removeLast(IntNode head) {
+        IntNode current = head;
+        IntNode previous = null;
+        if (current.next == null){ // List only has one node
+            return null;
+        }
+        while (current.next!=null){ // Traverse
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null; // Removes link to last node
         return head;
     }
 
     public static String displayList(IntNode head) {
-        String list = "";
+        StringBuilder list = new StringBuilder();
         while (head != null) {
-            list += head.toString();
+            list.append(head.toString());
             head = head.next;
-            list += " ";
+            list.append(" ");
         }
-        return list;
+        return list.toString();
+    }
+
+    public static void main(String[] args) {
+        IntNode front = new IntNode(25, null);
+        System.out.println(front);
+        addInFrontHead(front, 27);
+        insertAfter(front, 25, 13);
+        System.out.println(displayList(front));
+        front = removeHead(front);
+        System.out.println(displayList(front));
+        insertAfter(front, 13, 37);
+        System.out.println(displayList(front));
+        front = remove(front, 27);
+        System.out.println(displayList(front));
+        removeLast(front);
+        System.out.println(displayList(front));
     }
 
 }

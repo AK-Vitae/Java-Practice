@@ -9,6 +9,11 @@ public class StringNode {
 		this.next = next;
 	}
 
+	public StringNode(String data) {
+		this.data = data;
+		this.next = null;
+	}
+
 	public String toString() {
 		return data + "";
 	}
