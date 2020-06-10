@@ -1,4 +1,4 @@
-package datastructures.linkedlists;
+package datastructures.linkedlists.integer;
 
 public class IntNode {
 	public int data;

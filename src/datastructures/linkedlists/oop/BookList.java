@@ -1,4 +1,4 @@
-package datastructures.linkedlists.test;
+package datastructures.linkedlists.oop;
 
 import datastructures.linkedlists.oop.Book;
 import datastructures.linkedlists.oop.GenericList;

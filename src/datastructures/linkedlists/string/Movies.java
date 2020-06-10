@@ -1,4 +1,4 @@
-package datastructures.linkedlists;
+package datastructures.linkedlists.string;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;

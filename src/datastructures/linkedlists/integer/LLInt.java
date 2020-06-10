@@ -1,25 +1,27 @@
-package datastructures.linkedlists;
+package datastructures.linkedlists.integer;
+
+import datastructures.linkedlists.integer.IntNode;
 
 import java.util.NoSuchElementException;
 
-public class LLString {
+public class LLInt {
     // General Method Structure:
     // some pointer to head; ex. current = head
     // searching OR searching+link manipulation
     // return value; usually will be head as you need to keep track of the head
     // Note: == compares object/reference while .equals() compares content
 
-    public static StringNode addInFrontHead(StringNode head, String data) {
-        StringNode newNode = new StringNode(data); //Create new node
+    public static IntNode addInFrontHead(IntNode head, int data) {
+        IntNode newNode = new IntNode(data); //Create new node
         newNode.next = head.next; //Make new Node point to next item
         head.next = newNode; // Make head point to new Node
         return head;
     }
 
-    public static StringNode insertAfter(StringNode head, String target, String data) {
-        StringNode current = head;
+    public static IntNode insertAfter(IntNode head, int target, int data) {
+        IntNode current = head;
         while (current != null) { // Traverse until you reach a null value
-            if (current.data.equals(target)) { // Traverse until you reach target
+            if (current.data == target) { // Traverse until you reach target
                 break; // target is found and loop breaks
             }
             current = current.next; // If target is not found current will advance to next node until loop ends
@@ -27,24 +29,24 @@ public class LLString {
         if (current == null) {
             return head; // Target is not found in linked list
         }
-        StringNode newNode = new StringNode(data);
+        IntNode newNode = new IntNode(data);
         newNode.next = current.next; // new Node points to where current is pointing
         current.next = newNode; // current now points to the newly inserted node
         return head;
 
     }
 
-    public static StringNode insertBefore(StringNode head, String target, String data) {
-        StringNode current = head;
-        StringNode previous = null;
-        while (current != null && !current.data.equals(target)) { // Traverse
+    public static IntNode insertBefore(IntNode head, int target, int data) {
+        IntNode current = head;
+        IntNode previous = null;
+        while (current != null && current.data != target) { // Traverse
             previous = current;
             current = current.next;
         }
         if (current == null) { // Target is not found in linked list
             return head;
         }
-        StringNode newNode = new StringNode(data, current); // As current = target, the new Node needs to point to current
+        IntNode newNode = new IntNode(data, current); // As current = target, the new Node needs to point to current
         if (previous == null) { // If new Node is going to be inserted as the new head
             return newNode;
         }
@@ -54,7 +56,7 @@ public class LLString {
     }
 
 
-    public static StringNode removeHead(StringNode head) {
+    public static IntNode removeHead(IntNode head) {
         if (head == null) {
             throw new NoSuchElementException("Empty List");
         }
@@ -65,13 +67,13 @@ public class LLString {
         return head.next;
     }
 
-    public static StringNode remove(StringNode head, String target) {
-        StringNode current = head;
-        StringNode previous = null; // will hold address of the node that needs to be removed
-        if (current != null && current.data.equals(target)) { // If target is first node or there is only one node
+    public static IntNode remove(IntNode head, int target) {
+        IntNode current = head;
+        IntNode previous = null; // will hold address of the node that needs to be removed
+        if (current != null && current.data == target) { // If target is first node or there is only one node
             return head.next;
         }
-        while (current != null && !current.data.equals(target)) { // Traverse
+        while (current != null && current.data != target) { // Traverse
             previous = current;
             current = current.next;
         }
@@ -81,7 +83,21 @@ public class LLString {
         return head;
     }
 
-    public static String displayList(StringNode head) {
+    public static IntNode removeLast(IntNode head) {
+        IntNode current = head;
+        IntNode previous = null;
+        if (current.next == null){ // List only has one node
+            return null;
+        }
+        while (current.next!=null){ // Traverse
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null; // Removes link to last node
+        return head;
+    }
+
+    public static String displayList(IntNode head) {
         StringBuilder list = new StringBuilder();
         while (head != null) {
             list.append(head.toString());
@@ -92,15 +108,19 @@ public class LLString {
     }
 
     public static void main(String[] args) {
-        StringNode strFront = new StringNode("Everest", null);
-        System.out.println(strFront);
-        addInFrontHead(strFront, "K2");
-        System.out.println(displayList(strFront));
-        insertAfter(strFront,"K2","Kilimanjaro");
-        System.out.println(displayList(strFront));
-        insertBefore(strFront,"Kilimanjaro","Mt. Fuji");
-        System.out.println(displayList(strFront));
-        strFront = remove(strFront, "K2");
-        System.out.println(displayList(strFront));
+        IntNode front = new IntNode(25, null);
+        System.out.println(front);
+        addInFrontHead(front, 27);
+        insertAfter(front, 25, 13);
+        System.out.println(displayList(front));
+        front = removeHead(front);
+        System.out.println(displayList(front));
+        insertAfter(front, 13, 37);
+        System.out.println(displayList(front));
+        front = remove(front, 27);
+        System.out.println(displayList(front));
+        removeLast(front);
+        System.out.println(displayList(front));
     }
+
 }

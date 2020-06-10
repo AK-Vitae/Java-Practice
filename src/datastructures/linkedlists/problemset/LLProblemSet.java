@@ -1,7 +1,7 @@
 package datastructures.linkedlists.problemset;
 
-import datastructures.linkedlists.IntNode;
-import datastructures.linkedlists.StringNode;
+import datastructures.linkedlists.integer.IntNode;
+import datastructures.linkedlists.string.StringNode;
 
 public class LLProblemSet {
 	IntNode head;
