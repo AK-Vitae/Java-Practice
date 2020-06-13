@@ -17,6 +17,10 @@ public class GenericNode<T> {
         return this.next;
     }
 
+    public void setData(T data) {
+        this.data = data;
+    }
+
     public void setNext(GenericNode<T> next) {
         this.next = next;
     }
