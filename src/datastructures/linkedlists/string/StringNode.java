@@ -14,6 +14,22 @@ public class StringNode {
 		this.next = null;
 	}
 
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public StringNode getNext() {
+		return next;
+	}
+
+	public void setNext(StringNode next) {
+		this.next = next;
+	}
+
 	public String toString() {
 		return data + "";
 	}

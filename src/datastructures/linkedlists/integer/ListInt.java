@@ -1,4 +1,4 @@
-package datastructures.linkedlists.oop;
+package datastructures.linkedlists.integer;
 
 public class ListInt {
     private Node head;
