@@ -1,14 +1,16 @@
 # Time Complexity
 
-| Big O Notation | Name         | Explanation                                                  | Example                                                   |
-| -------------- | ------------ | ------------------------------------------------------------ | --------------------------------------------------------- |
-| O(1)           | Constant     | Constant Time Complexity describes an algorithm that will always execute in the same time (or space) regardless of the size of the input data set. | Accessing a specific index within an array                |
-| O(log n)       | Logarithmic  | Logarithmic Time Complexity refers to an algorithm that runs in proportionally to the logarithm of the input size. | Finding an element in an sorted array using binary search |
-| O(n)           | Linear       | Linear Time Complexity describes an algorithm or program who’s complexity will grow in direct proportion to the size of the input data. | Find max element in unsorted array                        |
-| O(n log n)     | Linearithmic | Linearithmic time complexity it’s slightly slower than a linear algorithm. However, it’s still much better than a quadratic algorithm | Sorting elements in an array with merge sort              |
-| O(n^2^)        | Quadratic    | Quadratic Time Complexity represents an algorithm whose performance is directly proportional to the squared size of the input data set. | Sorting an array with bubble sort                         |
-| O(n^k^)        | Polynomial   | Polynomial Time complexity can be a result of multiple nested loops. | Selection sort on n integers                              |
-| O(2^n^)        | Exponential  | Exponential Time complexity denotes an algorithm whose growth doubles with each addition to the input data set. | Many recursive algorithms: Towers of Hanoi                |
+| Big O Notation   | Name         | Explanation                                                  | Example                                                   |
+| ---------------- | ------------ | ------------------------------------------------------------ | --------------------------------------------------------- |
+| O(1)             | Constant     | Constant Time Complexity describes an algorithm that will always execute in the same time (or space) regardless of the size of the input data set. | Accessing a specific index within an array                |
+| O(log n)         | Logarithmic  | Logarithmic Time Complexity refers to an algorithm that runs in proportionally to the logarithm of the input size. | Finding an element in an sorted array using binary search |
+| O(n)             | Linear       | Linear Time Complexity describes an algorithm or program who’s complexity will grow in direct proportion to the size of the input data. | Find max element in unsorted array                        |
+| O(n log n)       | Linearithmic | Linearithmic time complexity it’s slightly slower than a linear algorithm. However, it’s still much better than a quadratic algorithm | Sorting elements in an array with merge sort              |
+| O(n^2^)          | Quadratic    | Quadratic Time Complexity represents an algorithm whose performance is directly proportional to the squared size of the input data set. | Sorting an array with bubble sort                         |
+| O(n<sup>2</sup>) | Polynomial   | Polynomial Time complexity can be a result of multiple nested loops. | Selection sort on n integers                              |
+| O(2<sup>n</sup>) | Exponential  | Exponential Time complexity denotes an algorithm whose growth doubles with each addition to the input data set. | Many recursive algorithms: Towers of Hanoi                |
+
+
 
 ## Array vs LinkedList 
 
