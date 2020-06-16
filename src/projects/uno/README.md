@@ -22,12 +22,13 @@ The game ends once a player has no cards. The player with no cards wins.
 
 The purpose of this project is to make a functioning UNO game using Linked List data structures and OOP. 
 
-Example methods:
-	In Card.java: 
+### Example methods:
+
+### In Card.java: 
 
 ​		public boolean matches(boolean exact,Card card) 
 
-​	In CardList.java: 
+### In CardList.java: 
 
 ​		public void traverse() private void add(int number,Card.Colors color) 
 
