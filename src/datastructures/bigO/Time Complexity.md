@@ -23,6 +23,18 @@
 
 
 
+## ArrayList vs LinkedList vs DoublyLinked List
+
+| Operation     | ArrayList | LinkedList | DoublyLinkedList |
+| ------------- | --------- | ---------- | ---------------- |
+| addFirst()    | O(n)      | O(1)       | O(1)             |
+| removeFirst() | O(n)      | O(1)       | O(1)             |
+| addLast()     | O(1)      | O(1)       | O(1)             |
+| removeLast()  | O(1)      | O(n)       | O(1)             |
+| remove(i)     | O(n)      | O(n)       | O(n)             |
+
+
+
 ## ArrayList vs LinkedList  (Stack Implementation)
 
 | Operation | ArrayList | LinkedList |
