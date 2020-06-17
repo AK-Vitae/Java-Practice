@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 // Only have access to the top element
 // Common methods: push(), pop(), size(), isEmpty(), clear(), peek()
 public class Stack<T> {
-    private Node<T> front;
+    private StackNode<T> front;
     private int size;
 
     public Stack() { // Constructor
@@ -20,7 +20,7 @@ public class Stack<T> {
     }
 
     public void push(T item) {
-        front = new Node<T>(item, front); // Adds to top of stack or front of list
+        front = new StackNode<T>(item, front); // Adds to top of stack or front of list
         size++;
     }
 

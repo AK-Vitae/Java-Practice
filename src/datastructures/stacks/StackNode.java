@@ -1,10 +1,10 @@
 package datastructures.stacks;
 
-public class Node<T> {
+public class StackNode<T> {
     private T data;
-    private Node<T> next;
+    private StackNode<T> next;
 
-    public Node(T data, Node<T> next) {
+    public StackNode(T data, StackNode<T> next) {
         this.data = data;
         this.next = next;
     }
@@ -17,11 +17,11 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node<T> getNext() {
+    public StackNode<T> getNext() {
         return next;
     }
 
-    public void setNext(Node<T> next) {
+    public void setNext(StackNode<T> next) {
         this.next = next;
     }
 }

@@ -1,8 +1,4 @@
-package datastructures.linkedlists.oop;
-
-import datastructures.linkedlists.oop.Book;
-import datastructures.linkedlists.oop.GenericList;
-import datastructures.linkedlists.oop.GenericNode;
+package datastructures.linkedlists.oop.basic;
 
 public class BookList {
     public static void main(String[] args) {

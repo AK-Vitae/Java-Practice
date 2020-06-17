@@ -1,4 +1,4 @@
-package datastructures.linkedlists.oop;
+package datastructures.linkedlists.oop.basic;
 
 public class GenericList<T> {
     private GenericNode<T> front;
@@ -77,6 +77,5 @@ public class GenericList<T> {
         }
         return false;
     }
-
 
 }

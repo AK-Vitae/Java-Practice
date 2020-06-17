@@ -1,4 +1,4 @@
-package datastructures.linkedlists.oop;
+package datastructures.linkedlists.oop.basic;
 
 public class Book {
     private String name;
