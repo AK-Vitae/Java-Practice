@@ -71,6 +71,7 @@ public class RecursiveList<T> {
         test.addFront(3);
         test.addFront(5);
         test.addFront(8);
+        test.addFront(3);
         test.traverse();
         test.deleteAll(test.getFront(), 3);
         System.out.println();
