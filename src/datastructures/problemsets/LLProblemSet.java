@@ -1,4 +1,4 @@
-package datastructures.linkedlists.problemset;
+package datastructures.problemsets;
 
 import datastructures.linkedlists.integer.IntNode;
 import datastructures.linkedlists.string.StringNode;
