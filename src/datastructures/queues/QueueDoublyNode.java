@@ -3,12 +3,12 @@ package datastructures.queues;
 import datastructures.linkedlists.doublyll.DoublyNode;
 
 //FIFO: First-In First-Out
-public class Queue<T> {
+public class QueueDoublyNode<T> {
     private DoublyNode<T> rear;
     private DoublyNode<T> front;
     private int size;
 
-    public Queue() { //Constructor
+    public QueueDoublyNode() { //Constructor
         this.front = null;
         this.rear = null;
         this.size = 0;
@@ -47,7 +47,7 @@ public class Queue<T> {
     }
 
     public static void main(String[] args) {
-        Queue<Integer> test = new Queue<Integer>();
+        QueueDoublyNode<Integer> test = new QueueDoublyNode<Integer>();
         test.enqueue(3);
         test.enqueue(4);
         test.enqueue(5);
