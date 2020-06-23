@@ -1,7 +1,9 @@
 package datastructures.queues.oop;
 
+import java.util.NoSuchElementException;
+
 public class Queue<T> {
-    private DLL<T> myList;
+    private final DLL<T> myList;
 
     public Queue() {
         myList = new DLL<T>();
@@ -12,12 +14,16 @@ public class Queue<T> {
     }
 
     public T dequeue() {
-        T element = null;
-        if (myList.size() > 0) {
-            element = myList.getLast();
-            myList.deleteLast();
+        if (myList.size() == 0) {
+            throw new NoSuchElementException();
         }
+        T element = myList.getLast();
+        myList.deleteLast();
         return element;
+    }
+
+    public int size() {
+        return myList.size();
     }
 
     public boolean isEmpty() {
@@ -50,6 +56,8 @@ public class Queue<T> {
         System.out.println("dequeue->" + myQueue.dequeue());
 
         myQueue.traverse();
+
+        System.out.println(myQueue.size());
     }
 
 }

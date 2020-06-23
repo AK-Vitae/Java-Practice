@@ -34,8 +34,28 @@ public class Stack<T> {
         return temp;
     }
 
+    public T peek() throws NoSuchElementException {
+        if (front == null) {
+            throw new NoSuchElementException();
+        }
+        return front.getData();
+    }
+
     public boolean isEmpty() {
         return front == null;
+    }
+
+    public int count() {
+        Stack<T> temp = new Stack<T>(); // Create a temporary stack
+        int count = 0;
+        while (!this.isEmpty()) { // Pop all items from this stack into temp stack and count as you go
+            temp.push(this.pop());
+            count++;
+        }
+        while (!temp.isEmpty()) {// Pop all items from temp stack back into this stack
+            this.push(temp.pop());
+        }
+        return count;
     }
 
     public void clear() { // Removes all elements from a stack
