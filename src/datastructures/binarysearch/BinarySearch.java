@@ -1,4 +1,4 @@
-package datastructures.bst;
+package datastructures.binarysearch;
 
 public class BinarySearch {
     //Iterative Approach
