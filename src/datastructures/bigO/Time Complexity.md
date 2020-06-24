@@ -58,4 +58,4 @@
 | Insert     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
 | Delete     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
 
-
+h = height of tree
