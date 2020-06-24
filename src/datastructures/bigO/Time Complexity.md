@@ -50,13 +50,12 @@
 
 
 
-## Unsorted Array vs DLL vs Sorted Array
+## BST Time Complexity
 
-| Dictionary Operations | Unsorted Array | Doubly LL | Sorted Array                                  |
-| --------------------- | -------------- | --------- | --------------------------------------------- |
-| Insert                | O(1)           | O(1)      | O(n)                                          |
-| Delete                | O(n)           | O(n)      | O(n)                                          |
-| Search                | O(n)           | O(n)      | Sequential: O(n) <br/>Binary Search: O(log n) |
-
+| Operations | Best Case | Average Case         | Worst Case |
+| ---------- | --------- | -------------------- | ---------- |
+| Search     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
+| Insert     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
+| Delete     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
 
 
