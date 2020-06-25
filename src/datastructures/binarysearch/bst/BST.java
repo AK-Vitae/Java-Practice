@@ -1,6 +1,7 @@
 package datastructures.binarysearch.bst;
 
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BST<T extends Comparable<T>> {
 
@@ -10,6 +11,10 @@ public class BST<T extends Comparable<T>> {
     public BST() {
         myRoot = null;
         count = 0;
+    }
+
+    public BTNode<T> getRoot() {
+        return myRoot;
     }
 
     public int findHeight(BTNode<T> root) {
@@ -49,7 +54,7 @@ public class BST<T extends Comparable<T>> {
     private void recursiveInsert(BTNode<T> myRoot, T data) {
         int c = data.compareTo(myRoot.getData());
         if (c == 0) {
-            throw new NoSuchElementException(); // data already exists in tree (duplicate)
+            throw new IllegalArgumentException("Input data cannot be a duplicate"); // data already exists in tree (duplicate)
         } else if (c < 0) {
             BTNode<T> leftTree = myRoot.getLeft();
             if (leftTree == null) { // element goes here
@@ -79,26 +84,41 @@ public class BST<T extends Comparable<T>> {
             recursiveInsert(this.myRoot, data);
     }
 
-    public void printInOrder(BTNode<T> myRoot) {
-        if (myRoot == null) {
+    public void printInOrder(BTNode<T> root) {
+        if (root == null) { // Empty tree
             return;
         }
-        printInOrder(myRoot.getLeft());
-        System.out.print(myRoot.getData() + " ");
-        printInOrder(myRoot.getRight());
+        printInOrder(root.getLeft());
+        System.out.print(root.getData() + " ");
+        printInOrder(root.getRight());
     }
 
+    public void reverseNodes(BTNode<T> root){
+        if (root == null) { // Empty tree
+            return;
+        }
+        reverseNodes(root.getLeft());
+        reverseNodes(root.getRight());
+        BTNode<T> curr = root.getLeft();
+        root.setLeft(root.getRight());
+        root.setRight(curr);
+    }
+
+    // Delete
     // 1. Leaves: Remove pointer to parent node
     // 2. 1 Child: Replace parent node with child
-    // 3. 2 Children: Replace deleted node with the smallest inorder successor node
+    // 3. 2 Children: Replace deleted node with the smallest inorder successor node/largest inorder predecessor
 
     public static void main(String[] args) {
         BST<Integer> test = new BST<Integer>();
         test.insert(17);
         test.insert(10);
+        test.insert(12);
         test.insert(30);
-        test.printInOrder(test.myRoot);
+        test.printInOrder(test.getRoot());
         System.out.println();
         System.out.println(test.findHeight(test.myRoot));
+        test.reverseNodes(test.getRoot());
+        test.printInOrder(test.getRoot());
     }
 }
