@@ -2,6 +2,7 @@ package datastructures.binarysearch.bst;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class BST<T extends Comparable<T>> {
 
@@ -30,48 +31,73 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
-    private boolean recursiveSearch(BTNode<T> myRoot, T target) {
-        if (myRoot == null) { // Empty tree
+    private boolean recursiveSearch(BTNode<T> root, T target) {
+        if (root == null) { // Empty tree or target not found
             return false;
         } else {
-            int c = target.compareTo(myRoot.getData());
+            int c = target.compareTo(root.getData());
             if (c == 0) {
                 return true;
             } else if (c < 0) { // go left
-                return recursiveSearch(myRoot.getLeft(), target);
+                return recursiveSearch(root.getLeft(), target);
             } else { // go right
-                return recursiveSearch(myRoot.getRight(), target);
+                return recursiveSearch(root.getRight(), target);
             }
         }
     }
 
-    // Handle root internally without user input
+    // Handle root internally without user input of root node
     public boolean search(T target) {
         return recursiveSearch(myRoot, target);
     }
 
     // Search for data and if it doesn't exist you insert accordingly
-    private void recursiveInsert(BTNode<T> myRoot, T data) {
-        int c = data.compareTo(myRoot.getData());
+    private void recursiveInsert(BTNode<T> root, T data) {
+        int c = data.compareTo(root.getData());
         if (c == 0) {
             throw new IllegalArgumentException("Input data cannot be a duplicate"); // data already exists in tree (duplicate)
         } else if (c < 0) {
-            BTNode<T> leftTree = myRoot.getLeft();
+            BTNode<T> leftTree = root.getLeft();
             if (leftTree == null) { // element goes here
                 count++;
-                BTNode<T> newNode = new BTNode<T>(data, null, null, myRoot);
-                myRoot.setLeft(newNode);
+                BTNode<T> newNode = new BTNode<T>(data, null, null, root);
+                root.setLeft(newNode);
             } else { // go left
                 recursiveInsert(leftTree, data);
             }
         } else {
-            BTNode<T> rightTree = myRoot.getRight();
+            BTNode<T> rightTree = root.getRight();
             if (rightTree == null) { // element goes here
                 count++;
-                BTNode<T> newNode = new BTNode<T>(data, null, null, myRoot);
-                myRoot.setRight(newNode);
+                BTNode<T> newNode = new BTNode<T>(data, null, null, root);
+                root.setRight(newNode);
             } else { // go right
                 recursiveInsert(rightTree, data);
+            }
+        }
+    }
+
+    private void recursiveInsertWithDuplicates(BTNode<T> root, T data) { //Used for BST that allow duplicates
+        int c = data.compareTo(root.getData());
+        if (c == 0) {
+            root.setCount(root.getCount() + 1); // duplicate so increment count
+        } else if (c < 0) {
+            BTNode<T> leftTree = root.getLeft();
+            if (leftTree == null) { // element goes here
+                count++;
+                BTNode<T> newNode = new BTNode<T>(data, null, null, root);
+                root.setLeft(newNode);
+            } else { // go left
+                recursiveInsertWithDuplicates(leftTree, data);
+            }
+        } else {
+            BTNode<T> rightTree = root.getRight();
+            if (rightTree == null) { // element goes here
+                count++;
+                BTNode<T> newNode = new BTNode<T>(data, null, null, root);
+                root.setRight(newNode);
+            } else { // go right
+                recursiveInsertWithDuplicates(rightTree, data);
             }
         }
     }
@@ -80,8 +106,32 @@ public class BST<T extends Comparable<T>> {
     public void insert(T data) {
         if (this.myRoot == null) { // Creates root
             this.myRoot = new BTNode<T>(data, null, null, null);
-        } else
+        } else {
             recursiveInsert(this.myRoot, data);
+        }
+    }
+
+    public void insertWithDuplicates(T data) { //Used for BST that allow duplicates
+        if (this.myRoot == null) {
+            this.myRoot = new BTNode<T>(data, null, null, null);
+        } else {
+            recursiveInsertWithDuplicates(this.myRoot, data);
+        }
+    }
+
+    private void getCount(BTNode<T> root, T target) {
+        if (root == null) { // Empty tree or target not found
+            throw new NoSuchElementException();
+        } else {
+            int c = target.compareTo(root.getData());
+            if (c == 0) {
+                System.out.println(root.getCount());
+            } else if (c < 0) { // go left
+                getCount(root.getLeft(), target);
+            } else { // go right
+                getCount(root.getRight(), target);
+            }
+        }
     }
 
     public void printInOrder(BTNode<T> root) {
@@ -93,7 +143,7 @@ public class BST<T extends Comparable<T>> {
         printInOrder(root.getRight());
     }
 
-    public void reverseNodes(BTNode<T> root){
+    public void reverseNodes(BTNode<T> root) {
         if (root == null) { // Empty tree
             return;
         }
@@ -120,5 +170,18 @@ public class BST<T extends Comparable<T>> {
         System.out.println(test.findHeight(test.myRoot));
         test.reverseNodes(test.getRoot());
         test.printInOrder(test.getRoot());
+        System.out.println();
+
+
+        BST<Integer> test2 = new BST<Integer>();
+        test2.insertWithDuplicates(3);
+        test2.insertWithDuplicates(23);
+        test2.insertWithDuplicates(12);
+        test2.insertWithDuplicates(13);
+        test2.insertWithDuplicates(5);
+        test2.insertWithDuplicates(12);
+        test2.printInOrder(test2.getRoot());
+        System.out.println();
+        test2.getCount(test2.getRoot(), 12);
     }
 }
