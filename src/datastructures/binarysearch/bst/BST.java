@@ -1,7 +1,5 @@
 package datastructures.binarysearch.bst;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class BST<T extends Comparable<T>> {
@@ -16,6 +14,10 @@ public class BST<T extends Comparable<T>> {
 
     public BTNode<T> getRoot() {
         return myRoot;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     public int findHeight(BTNode<T> root) {
