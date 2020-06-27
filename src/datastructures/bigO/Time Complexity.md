@@ -52,10 +52,39 @@
 
 ## BST Time Complexity
 
-| Operations | Best Case | Average Case         | Worst Case |
-| ---------- | --------- | -------------------- | ---------- |
-| Search     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
-| Insert     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
-| Delete     | O(1)      | O(h) &#8594;O(log n) | O(n)       |
+| Operation | Best Case | Average Case         | Worst Case |
+| --------- | --------- | -------------------- | ---------- |
+| Search    | O(1)      | O(h) &#8594;O(log n) | O(n)       |
+| Insert    | O(1)      | O(h) &#8594;O(log n) | O(n)       |
+| Delete    | O(1)      | O(h) &#8594;O(log n) | O(n)       |
 
 h = height of tree
+
+
+
+## Unordered List vs Ordered List vs BST
+
+| Operation | Unordered List | Ordered List | BST      |       |
+| --------- | -------------- | ------------ | -------- | ----- |
+| Search    | O(1)           | O(1)         | O(1)     | Best  |
+|           | O(n)           | O(log n)     | O(n)     | Worst |
+| Insert    | O(1)           | O(log n)     | O(log n) | Best  |
+|           | O(1)           | O(n)         | O(n)     | Worst |
+| Delete    | O(1)           | O(log n)     | O(log n) | Best  |
+|           | O(n)           | O(n)         | O(n)     | Worst |
+
+
+
+## Tree Sort
+
+| Operation                     | Time Complexity |
+| ----------------------------- | --------------- |
+| Traversing an array of size n | O(n)            |
+| Inserting (Balanced Tree)     | O(n log n)      |
+| Inserting (Skewed Tree)       | O(n)            |
+| In-order Traversal            | O(n)            |
+
+| Operation  | Best Case | Average Case         | Worst Case (When Tree is Skewed) |
+| ---------- | --------- | -------------------- | ---------- |
+| Tree Sort  | O(n log n) | O(n) * O(log n) + O(n) = O(n log n) | O(n) * O(n) + O(n) = O(n<sup>2</sup>) |
+
