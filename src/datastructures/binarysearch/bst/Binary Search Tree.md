@@ -29,3 +29,18 @@ Right side of root node is right subtree, while left side of root node is left s
 5. Left and right nodes can equal null
 
 Average Number of Comparisons for Success = (Sum of all comparisons to each success node)/(The number of success node)
+
+## Height
+
+
+## Delete/Remove a Node
+Delete
+1. Leaves: Remove pointer to parent node
+2. 1 Child: Replace parent node with child
+3. 2 Children: Replace the deleted node with the smallest inorder successor node/largest inorder predecessor
+
+## Handling Duplicates
+Handling Duplicates:
+Method 1: Change logic of search tree, where left side of node is < and right side is >=, or the inverse <= and >
+Method 2: Use linked list logic and create a next pointer which would hold all duplicates
+Method 3: Create a count field that would increment whenever a duplicate is inserted - Easiest Way
