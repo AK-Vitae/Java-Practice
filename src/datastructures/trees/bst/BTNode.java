@@ -1,4 +1,4 @@
-package datastructures.binarysearch.bst;
+package datastructures.trees.bst;
 
 public class BTNode<T extends Comparable<T>> {
     private T data;

@@ -1,4 +1,4 @@
-package datastructures.binarysearch.bst;
+package datastructures.trees.bst;
 
 import java.util.NoSuchElementException;
 
