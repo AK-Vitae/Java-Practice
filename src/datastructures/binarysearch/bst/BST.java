@@ -20,6 +20,7 @@ public class BST<T extends Comparable<T>> {
         return count;
     }
 
+    // Empty Tree will have height -1
     public int findHeight(BTNode<T> root) {
         if (root == null) { // Empty tree
             return -1; // Number of edges approach
@@ -79,6 +80,19 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
+    // Handle root internally without user input
+    public void insert(T data) {
+        if (this.myRoot == null) { // Creates root
+            this.myRoot = new BTNode<T>(data, null, null, null);
+        } else {
+            recursiveInsert(this.myRoot, data);
+        }
+    }
+
+    // Handling Duplicates:
+    // Method 1: Change logic of search tree, where left side of node is < and right side is >=, or the inverse <= and >
+    // Method 2: Use linked list logic and create a next pointer which would hold all duplicates
+    // Method 3: Create a count field that would increment whenever a duplicate is inserted - Easiest Way
     private void recursiveInsertWithDuplicates(BTNode<T> root, T data) { //Used for BST that allow duplicates
         int c = data.compareTo(root.getData());
         if (c == 0) {
@@ -104,15 +118,6 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
-    // Handle root internally without user input
-    public void insert(T data) {
-        if (this.myRoot == null) { // Creates root
-            this.myRoot = new BTNode<T>(data, null, null, null);
-        } else {
-            recursiveInsert(this.myRoot, data);
-        }
-    }
-
     public void insertWithDuplicates(T data) { //Used for BST that allow duplicates
         if (this.myRoot == null) {
             this.myRoot = new BTNode<T>(data, null, null, null);
@@ -120,8 +125,41 @@ public class BST<T extends Comparable<T>> {
             recursiveInsertWithDuplicates(this.myRoot, data);
         }
     }
+    //
 
-    private void getCount(BTNode<T> root, T target) {
+    //Min
+    public T minNode() {
+        if (this.myRoot == null) {
+            throw new NoSuchElementException();
+        }
+        BTNode<T> root = myRoot;
+        T min = root.getData();
+        root = root.getLeft();
+        while (root != null) {
+            min = root.getData();
+            root = root.getLeft();
+        }
+        return min;
+
+    }
+
+    //Max
+    public T maxNode() {
+        if (this.myRoot == null) {
+            throw new NoSuchElementException();
+        }
+        BTNode<T> root = myRoot;
+        T min = root.getData();
+        root = root.getRight();
+        while (root != null) {
+            min = root.getData();
+            root = root.getRight();
+        }
+        return min;
+
+    }
+
+    private void getCount(BTNode<T> root, T target) { // Uses recursiveSearch Logic
         if (root == null) { // Empty tree or target not found
             throw new NoSuchElementException();
         } else {
@@ -136,8 +174,9 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
+    //In order traversal
     public void printInOrder(BTNode<T> root) {
-        if (root == null) { // Empty tree
+        if (root == null) {
             return;
         }
         printInOrder(root.getLeft());
@@ -146,7 +185,7 @@ public class BST<T extends Comparable<T>> {
     }
 
     public void reverseNodes(BTNode<T> root) {
-        if (root == null) { // Empty tree
+        if (root == null) {
             return;
         }
         reverseNodes(root.getLeft());
@@ -157,9 +196,9 @@ public class BST<T extends Comparable<T>> {
     }
 
     // Delete
-    // 1. Leaves: Remove pointer to parent node
-    // 2. 1 Child: Replace parent node with child
-    // 3. 2 Children: Replace deleted node with the smallest inorder successor node/largest inorder predecessor
+    // Case 1. Leaves: Remove pointer to parent node
+    // Case 2. 1 Child: Replace parent node with child
+    // Case 3. 2 Children: Replace deleted node with the smallest inorder successor node/largest inorder predecessor
 
     public static void main(String[] args) {
         BST<Integer> test = new BST<Integer>();
@@ -185,5 +224,7 @@ public class BST<T extends Comparable<T>> {
         test2.printInOrder(test2.getRoot());
         System.out.println();
         test2.getCount(test2.getRoot(), 12);
+        System.out.println(test2.minNode());
+        System.out.println(test2.maxNode());
     }
 }
