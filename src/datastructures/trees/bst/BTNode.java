@@ -33,6 +33,10 @@ public class BTNode<T extends Comparable<T>> {
         return count;
     }
 
+    public void setData(T data) {
+        this.data = data;
+    }
+
     public void setLeft(BTNode<T> left) {
         this.left = left;
     }
