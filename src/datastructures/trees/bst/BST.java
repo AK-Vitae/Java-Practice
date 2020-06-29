@@ -127,39 +127,53 @@ public class BST<T extends Comparable<T>> {
     }
     //
 
-    //Min
-    public T minNode() {
+    //Returns smallest node in tree/subtree
+    public BTNode<T> minNode() {
         if (this.myRoot == null) {
             throw new NoSuchElementException();
         }
         BTNode<T> root = myRoot;
-        T min = root.getData();
+        BTNode<T> min = root;
         root = root.getLeft();
         while (root != null) {
-            min = root.getData();
+            min = root;
             root = root.getLeft();
         }
         return min;
-
     }
 
-    //Max
-    public T maxNode() {
+    public T min(BTNode<T> root) {
+        while (root.getLeft() != null)
+            root = root.getLeft();
+
+        return root.getData();
+    }
+
+
+    //Returns largest node in tree/subtree
+    public BTNode<T> maxNode() {
         if (this.myRoot == null) {
             throw new NoSuchElementException();
         }
         BTNode<T> root = myRoot;
-        T min = root.getData();
+        BTNode<T> max = root;
         root = root.getRight();
         while (root != null) {
-            min = root.getData();
+            max = root;
             root = root.getRight();
         }
-        return min;
+        return max;
 
     }
 
-    private void getCount(BTNode<T> root, T target) { // Uses recursiveSearch Logic
+    public T max(BTNode<T> root) {
+        while (root.getRight() != null)
+            root = root.getRight();
+
+        return root.getData();
+    }
+
+    public void getCount(BTNode<T> root, T target) { // Uses recursiveSearch Logic
         if (root == null) { // Empty tree or target not found
             throw new NoSuchElementException();
         } else {
@@ -174,7 +188,7 @@ public class BST<T extends Comparable<T>> {
         }
     }
 
-    //In order traversal
+    //In-order traversal
     public void printInOrder(BTNode<T> root) {
         if (root == null) {
             return;
@@ -198,33 +212,80 @@ public class BST<T extends Comparable<T>> {
     // Delete
     // Case 1. Leaves: Remove pointer to parent node
     // Case 2. 1 Child: Replace parent node with child
-    // Case 3. 2 Children: Replace deleted node with the smallest inorder successor node/largest inorder predecessor
+    // Case 3. 2 Children: Replace deleted node with the smallest in-order successor node/largest in-order predecessor
+    private BTNode<T> deleteRecursive(BTNode<T> root, T target) { //Smallest in-order successor
+        if (root == null) { // Empty tree or target not found
+            return null;
+        }
+        int c = target.compareTo(root.getData());
+        if (c < 0) {
+            root.setLeft(deleteRecursive(root.getLeft(), target));
+        } else if (c > 0) {
+            root.setRight(deleteRecursive(root.getRight(), target));
+        } else { // Target found; now delete it
+            if (root.getRight() == null) { // root has at most one child, on the left
+                root = root.getLeft();
+            } else { // root has child on right, so replace value with in-order successor
+                T successor = min(root.getRight());
+                root.setData(successor);
+                root.setRight(deleteRecursive(root.getRight(), successor));
+            }
+        }
+        return root;
+    }
+
+    public void delete(T target) {
+        this.myRoot = deleteRecursive(myRoot, target);
+    }
+
 
     public static void main(String[] args) {
         BST<Integer> test = new BST<Integer>();
+        // Insert
         test.insert(17);
         test.insert(10);
         test.insert(12);
         test.insert(30);
+        test.insert(44);
+        test.insert(15);
+        // In-order print
+        test.printInOrder(test.getRoot());
+        // Delete
+        test.delete(17);
+        System.out.println();
+        // In-order print
         test.printInOrder(test.getRoot());
         System.out.println();
-        System.out.println(test.findHeight(test.myRoot));
+        // Height
+        System.out.println("Height: " + test.findHeight(test.myRoot));
+        // Reverse Nodes
         test.reverseNodes(test.getRoot());
+        // In-order print
         test.printInOrder(test.getRoot());
         System.out.println();
 
 
         BST<Integer> test2 = new BST<Integer>();
+        // Insert
         test2.insertWithDuplicates(3);
         test2.insertWithDuplicates(23);
         test2.insertWithDuplicates(12);
         test2.insertWithDuplicates(13);
         test2.insertWithDuplicates(5);
         test2.insertWithDuplicates(12);
+        // In-order print
         test2.printInOrder(test2.getRoot());
         System.out.println();
+        // Get count of duplicates
         test2.getCount(test2.getRoot(), 12);
-        System.out.println(test2.minNode());
-        System.out.println(test2.maxNode());
+        // Min and Max
+        System.out.println("Smallest Node: " + test2.minNode().getData());
+        System.out.println("Smallest Node: " + test2.min(test2.getRoot()));
+        System.out.println("Largest Node: " + test2.maxNode().getData());
+        System.out.println("Largest Node: " + test2.max(test2.getRoot()));
+        // Delete
+        test2.delete(23);
+        // In-order print
+        test2.printInOrder(test2.getRoot());
     }
 }
