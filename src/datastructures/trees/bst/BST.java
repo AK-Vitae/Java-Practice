@@ -189,13 +189,18 @@ public class BST<T extends Comparable<T>> {
     }
 
     //In-order traversal
-    public void printInOrder(BTNode<T> root) {
+    public void inOrderTraverse(BTNode<T> root) {
         if (root == null) {
             return;
         }
-        printInOrder(root.getLeft());
+        inOrderTraverse(root.getLeft());
         System.out.print(root.getData() + " ");
-        printInOrder(root.getRight());
+        inOrderTraverse(root.getRight());
+    }
+
+    public void inOrderTraverse() {
+        inOrderTraverse(myRoot);
+        System.out.println("");
     }
 
     public void reverseNodes(BTNode<T> root) {
@@ -249,19 +254,19 @@ public class BST<T extends Comparable<T>> {
         test.insert(44);
         test.insert(15);
         // In-order print
-        test.printInOrder(test.getRoot());
+        test.inOrderTraverse(test.getRoot());
         // Delete
         test.delete(17);
         System.out.println();
         // In-order print
-        test.printInOrder(test.getRoot());
+        test.inOrderTraverse(test.getRoot());
         System.out.println();
         // Height
         System.out.println("Height: " + test.findHeight(test.myRoot));
         // Reverse Nodes
         test.reverseNodes(test.getRoot());
         // In-order print
-        test.printInOrder(test.getRoot());
+        test.inOrderTraverse(test.getRoot());
         System.out.println();
 
 
@@ -274,7 +279,7 @@ public class BST<T extends Comparable<T>> {
         test2.insertWithDuplicates(5);
         test2.insertWithDuplicates(12);
         // In-order print
-        test2.printInOrder(test2.getRoot());
+        test2.inOrderTraverse(test2.getRoot());
         System.out.println();
         // Get count of duplicates
         test2.getCount(test2.getRoot(), 12);
@@ -286,6 +291,6 @@ public class BST<T extends Comparable<T>> {
         // Delete
         test2.delete(23);
         // In-order print
-        test2.printInOrder(test2.getRoot());
+        test2.inOrderTraverse(test2.getRoot());
     }
 }
