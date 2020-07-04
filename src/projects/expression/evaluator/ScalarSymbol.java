@@ -3,8 +3,7 @@ package projects.expression.evaluator;
 /**
  * This class encapsulates a (name, integer value) pair for a scalar (non-array) variable. 
  * The variable name is a sequence of one or more letters.
- * 
- * @author ru-nb-cs112
+ *
  *
  */
 public class ScalarSymbol {

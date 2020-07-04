@@ -4,7 +4,6 @@ package projects.expression.evaluator;
  * This class encapsulates a (name, array of integer values) pair for an array variable.
  * The name is a sequence of one or more letters.
  *
- * @author ru-nb-cs112
  */
 public class ArraySymbol {
 
