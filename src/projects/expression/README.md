@@ -60,7 +60,9 @@ Following is a high level description of each class (more information available 
 1. **buildSymbols** - This method populates the two instance fields, scalars and arrays, with all simple (scalar) variables, and all array variables, respectively, that appear in the expression.
 2. **loadSymbolValues** - This method reads values for all scalars and arrays from a file, into the ScalarSymbol and ArraySymbol objects stored in the scalars and arrays array lists. 
 3. **evaluate** - This method evaluates the expression. 
-4. **printScalars** and **printArrays** may be used to verify the correctness of the scalars and arrays lists after the buildSymbols and loadSymbolValues methods.
+4. **orderOfOperations** - This method will calculate the order in which operations should be done. "*" and "/" have higher priority than "+" and "-".
+5. **solve** - This method will do the mathematical calculation involved in each expression/subexpression.
+6. **printScalars** and **printArrays** may be used to verify the correctness of the scalars and arrays lists after the buildSymbols and loadSymbolValues methods.
 
 **Evaluator**: The application driver, which calls methods in Expression.
 
