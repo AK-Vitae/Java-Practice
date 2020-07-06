@@ -249,7 +249,7 @@ public class Expression {
     }
 
     // Mathematical Calculations
-    public float solve(String op, float right, float left) {
+    private float solve(String op, float right, float left) {
         switch (op) {
             case "+" -> {
                 System.out.println(left + "+" + right);
