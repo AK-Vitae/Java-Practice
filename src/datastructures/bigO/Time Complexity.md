@@ -50,6 +50,16 @@
 
 
 
+## Queue
+
+| Operation | Time Complexity         |
+| --------- | ----------------------- |
+| enqueue() | O(1) - Add to the head  |
+| dequeue() | O(1) - Remove from tail |
+| search()  | O(n)                    |
+
+
+
 ## BST Time Complexity
 
 | Operation | Best Case | Average Case         | Worst Case |
@@ -73,7 +83,17 @@ h = height of tree
 | Delete    | O(1)           | O(log n)     | O(log n) | Best  |
 |           | O(n)           | O(n)         | O(n)     | Worst |
 
+## AVL Tree 
 
+| Operation                                                    | Worst Case     |
+| ------------------------------------------------------------ | -------------- |
+| Search                                                       | O(h) →O(log n) |
+| Insert (Phase 1: Search + Phase 2: Rotation(s) + Rebalancing) | O(h) →O(log n) |
+| Rotate                                                       | O(1)           |
+| Rebalancing                                                  | O(h) →O(log n) |
+| Delete (Phase 1: Search + Phase 2: Rotation(s) + Rebalancing) | O(h) →O(log n) |
+
+h = height of tree
 
 ## Tree Sort
 
@@ -88,3 +108,11 @@ h = height of tree
 | ---------- | --------- | -------------------- | ---------- |
 | Tree Sort  | O(n log n) | O(n) * O(log n) + O(n) = O(n log n) | O(n) * O(n) + O(n) = O(n<sup>2</sup>) |
 
+
+
+## Search in Sorted Array vs Sorted LL vs BST vs AVL vs Stack
+
+| Sorted Array           | Sorted LL                                                    | BST              | AVL                         | Stack |         |
+| ---------------------- | ------------------------------------------------------------ | ---------------- | --------------------------- | ----- | ------- |
+| O(log n) Binary Search | O(n) Since you cant access internal nodes without traversing | O(log n)         | O(log n)                    | O(n)  | Average |
+| O(log n) Binary Search | O(n)                                                         | O(n) due to skew | O(log n) due to rebalancing | O(n)  | Worst   |

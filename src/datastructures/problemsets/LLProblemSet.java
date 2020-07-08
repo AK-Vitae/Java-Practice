@@ -24,10 +24,11 @@ public class LLProblemSet {
 		// Problem Set
 		IntNode front = new IntNode(5, null);
 		front = addBefore(front, 5, 10);
-		front = addBefore(front, 5, 15);
-		front = addBeforeLast(front, 30);
+//		front = addBefore(front, 5, 15);
+//		front = addBeforeLast(front, 30);
 		System.out.println(displayList(front));
 		deleteEveryOther(front);
+		System.out.println("Delete Every Other: " + displayList(front));
 		front = addBefore(front, 10, 5);
 		front = addBeforeLast(front, 25);
 		System.out.println("LL1: " + displayList(front));
@@ -117,19 +118,25 @@ public class LLProblemSet {
 
 	// Problem 4
 	public static void deleteEveryOther(IntNode head) {
-		if (head == null || head.next == null) {
-			return; // Empty or a list of one
+		if (head == null || head.next == null){
+			return; // Empty list or list of one
 		}
 		IntNode prev = head;
-		IntNode current = head.next;
-		while (prev != null && current != null) {
-			prev.next = current.next; // Makes prev point after the other node
-			current = null; // "Remove" other node
-			prev = prev.next;
-			if (prev != null)
-				current = prev.next;
+		IntNode curr = head.next;
+		boolean tbd = true;
+		while (curr!=null){
+			if (tbd){
+				curr = curr.next; // move current up to next value or null
+				prev.next = curr; // make prev point to current, therefore "deleting" the node
+				tbd = false;
+			} else {
+				prev = curr;
+				curr = curr.next;
+				tbd = true;
+			}
 		}
 	}
+
 
 	// Problem 5
 	public static StringNode deleteAllOccurrences(StringNode head, String target) {
