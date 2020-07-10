@@ -116,3 +116,11 @@ h = height of tree
 | ---------------------- | ------------------------------------------------------------ | ---------------- | --------------------------- | ----- | ------- |
 | O(log n) Binary Search | O(n) Since you cant access internal nodes without traversing | O(log n)         | O(log n)                    | O(n)  | Average |
 | O(log n) Binary Search | O(n)                                                         | O(n) due to skew | O(log n) due to rebalancing | O(n)  | Worst   |
+
+## Heap
+
+| Operation | Worst Case                          | Average Case |
+| --------- | ----------------------------------- | ------------ |
+| Sift Down | O(1) + O(log n) = O(log n)          | O(log n)     |
+| Sift Up   | O(log n)                            | O(log n)     |
+| heapSort  | n steps of extraction = O (n log n) | O (n log n)  |
