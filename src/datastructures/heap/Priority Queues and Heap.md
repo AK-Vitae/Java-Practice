@@ -1,6 +1,6 @@
 # Priority Queues
 
-* Priority Queues are similar to queues (FIFO) but you extract the item with the highest priority or lowest priority depending on implementation.
+* Priority Queues are similar to queues (FIFO), but you extract the item with the highest priority or lowest priority depending on implementation.
   * extract max: highest priority
   * extract min: lowest priority
 * Priority Queues are implemented with Binary Trees
@@ -11,7 +11,7 @@ You can have a max-heap or min-heap.
 
 Properties of a Heap:
 
-1. Is a **complete binary tree**, meaning that each node has 2 children except the last level where the completion decreases left to right. 
+1. Is a **complete binary tree**, meaning each node has 2 children except the last level where the completion decreases left to right. 
 2. Musty satisfy the **heap property**: 
    - In a **max heap**, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C.
    - In a **min heap**, the key of P is less than or equal to the key of C.
