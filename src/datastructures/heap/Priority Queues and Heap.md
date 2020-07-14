@@ -44,7 +44,5 @@ Properties of a Heap:
 
 ## Heap Sort
 
-Extract max or min, depending on the heap, until the heap is empty.
-
-
+Heap sort is a comparison based sorting technique based on Binary Heap data structure. It is similar to selection sort where we first find the maximum element and place the maximum element at the end. We repeat the same process for remaining element. The same logic applies to finding the minimum. 
 
