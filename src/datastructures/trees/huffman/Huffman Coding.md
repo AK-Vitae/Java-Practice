@@ -66,7 +66,7 @@ After final merge:
 | --------- | ---- |
 | Character | root |
 
-![Huffman Tree](.\Huffman Tree.png)
+![Huffman Tree](src/datastructures/trees/huffman/Huffman Tree.png)
 
 ### Encoding of Each Character
 
