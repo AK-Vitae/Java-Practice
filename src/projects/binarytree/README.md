@@ -32,6 +32,7 @@ left subtree and the minimum element in the right subtree.
 The tree that is generated has a root with a value of 10.15, which is the average of the maximum
 value of the left subtree (which is 10) and the minimum value of the right subtree (which is 10.3),
 so the root has a value of (10+10.3)/2 = 10.15
+
 The leaves have the actual values and the number of times each value appears.
 
 ## Project Classes 
