@@ -80,12 +80,15 @@ public class BinaryTree {
         // by comparing the value in root to the target. You know that you got to a
         // leaf when the value count of the root is not equal to 0.
         */
+        // Code is structured to differentiate from returning a internal node and if the target is not in the tree
         if (root.getData().value == target) {
+            // Internal Node
             if (root.getData().count == 0) {
                 //System.out.print("Internal Node of Tree: ");
                 return root.getData().count;
             }
             //System.out.print("Tree Leaf with count of ");
+            // Leaf Node
             return root.getData().count;
 
         }
@@ -95,8 +98,8 @@ public class BinaryTree {
             return search(root.getLeft(), target);
         }
         //System.out.print("Target not found in Tree: ");
+        // Target not found
         return 0;
-
     }
 
     // Helper method that will round to 4 decimal places
@@ -105,9 +108,8 @@ public class BinaryTree {
     }
 
     public static void main(String[] args) {
-        // this is given to you and should work with your methods.
-        // The expected output is:
-//		(13.0,1) (12.5,1) (12.3,1) (12.1,1) (11.9,1) (10.3,2) (10.0,1) (9.2,1) (9.1,1) (8.0,1) (7.2,3) (5.8,2) (2.3,1) (1.0,1) 
+//      Expected output:
+//		(13.0,1) (12.5,1) (12.3,1) (12.1,1) (11.9,1) (10.3,2) (10.0,1) (9.2,1) (9.1,1) (8.0,1) (7.2,3) (5.8,2) (2.3,1) (1.0,1)
 //		(10.15,0)  7.2   0
 //		(7.6,0)  7.2   0
 //		(4.05,0)  7.2   0
