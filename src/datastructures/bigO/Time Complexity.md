@@ -119,8 +119,28 @@ h = height of tree
 
 ## Heap
 
-| Operation | Worst Case                          | Average Case |
-| --------- | ----------------------------------- | ------------ |
-| Sift Down | O(1) + O(log n) = O(log n)          | O(log n)     |
-| Sift Up   | O(log n)                            | O(log n)     |
-| heapSort  | n steps of extraction = O (n log n) | O (n log n)  |
+| Operation | Average Case | Worst Case                          |
+| --------- | ------------ | ----------------------------------- |
+| Sift Down | O(log n)     | O(1) + O(log n) = O(log n)          |
+| Sift Up   | O(log n)     | O(log n)                            |
+| heapSort  | O(n log n)   | n steps of extraction = O (n log n) |
+
+## Hash Table
+
+| Operation | Average Case | Worst Case |
+| --------- | ------------ | ---------- |
+| Search    | O(1)         | O(n)       |
+| Insert    | O(1)         | O(n)       |
+| Delete    | O(1)         | O(n)       |
+
+## Worst Case Running Time Collision Resolution
+
+| Technique         | Insertion                                                    | Search                                                       |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Linear Probing    | O(N)                                                         | O(N)                                                         |
+| Quadratic Probing | O(N)                                                         | O(N)                                                         |
+| Chaining          | O(1) as new entry is inserted at the front/back of the chain at the hashed location | O(n) when all n entries are hashed to the same location and form a single chain |
+
+N = size of the array
+
+n = number of entries
