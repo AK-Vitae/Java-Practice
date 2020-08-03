@@ -140,16 +140,16 @@ public class LittleSearchEngine {
      */
     public void mergeKeyWords(HashMap<String, Occurrence> kws) {
         //Change this up
-        for (String key : kws.keySet()) {
-            ArrayList<Occurrence> oc = new ArrayList<Occurrence>();
-
-            if (keywordsIndex.containsKey(key)) {
-                oc = keywordsIndex.get(key);//if the occurrence already exist in the main key word
-            }
-            oc.add(kws.get(key));
-            insertLastOccurrence(oc);
-            keywordsIndex.put(key, oc);
-        }
+//        for (String key : kws.keySet()) {
+//            ArrayList<Occurrence> oc = new ArrayList<Occurrence>();
+//
+//            if (keywordsIndex.containsKey(key)) {
+//                oc = keywordsIndex.get(key);//if the occurrence already exist in the main key word
+//            }
+//            oc.add(kws.get(key));
+//            insertLastOccurrence(oc);
+//            keywordsIndex.put(key, oc);
+//        }
     }
 
     /**
@@ -223,62 +223,63 @@ public class LittleSearchEngine {
      * the result is null.
      */
     public ArrayList<String> top5search(String kw1, String kw2) {
-        ArrayList<String> topFive = new ArrayList<>();
-        // Make keywords into valid search terms
-        kw1 = kw1.trim().toLowerCase();
-        kw2 = kw2.trim().toLowerCase();
-        ArrayList<Occurrence> list1 = keywordsIndex.get(kw1);
-        ArrayList<Occurrence> list2 = keywordsIndex.get(kw2);
-        if(!keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//both strings are not found
-            System.out.println("Both strings are not found");
-            return null;
-        }
-        else if(keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//contains kw1 but not kw2
-            for(int i = 0; i < list1.size(); i++){
-                Occurrence occurrence = list1.get(i);
-                if(topFive.size() < 5){
-                    topFive.add(occurrence.document);
-                }
-            }
-            System.out.println("contains kw1 but not kw2");
-            System.out.println("Results:" + topFive);
-            return topFive;
-        }
-        else if(keywordsIndex.containsKey(kw2) && !keywordsIndex.containsKey(kw1)){//contains kw1 but not kw2
-            for(int i = 0; i < list2.size(); i++){
-                Occurrence occurrence = list2.get(i);
-                if(topFive.size() < 5){
-                    topFive.add(occurrence.document);
-                }
-            }
-            System.out.println("contains kw2 but not kw1");
-            System.out.println("Results:" + topFive);
-            return topFive;
-        }
-        else{//both are keywords
-            System.out.println("both are keywords");
-            ArrayList<Occurrence> occs = new ArrayList<Occurrence>();
-            occs.addAll(keywordsIndex.get(kw1));
-            occs.addAll(keywordsIndex.get(kw2));
-            for(int count = 0; count < 5 && !occs.isEmpty(); count++){
-                int ptr = 0;
-                int prev = -1;
-                for(ptr = 0; ptr < occs.size() && occs.get(ptr) != null; ptr++){
-                    if (prev == -1){
-                        if (!topFive.contains(occs.get(ptr).document)) prev = ptr;
-                    } else if (occs.get(ptr).frequency > occs.get(prev).frequency){
-                        if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
-                    } else if (occs.get(ptr).frequency == occs.get(prev).frequency){
-                        if(keywordsIndex.get(kw1).contains(occs.get(ptr))){
-                            if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
-                        }
-                    }
-                }
-                if (prev != -1) topFive.add(occs.remove(prev).document);
-            }
-            System.out.println("Result: " + topFive);
-            return topFive;
-        }
+//        ArrayList<String> topFive = new ArrayList<>();
+//        // Make keywords into valid search terms
+//        kw1 = kw1.trim().toLowerCase();
+//        kw2 = kw2.trim().toLowerCase();
+//        ArrayList<Occurrence> list1 = keywordsIndex.get(kw1);
+//        ArrayList<Occurrence> list2 = keywordsIndex.get(kw2);
+//        if(!keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//both strings are not found
+//            System.out.println("Both strings are not found");
+//            return null;
+//        }
+//        else if(keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//contains kw1 but not kw2
+//            for(int i = 0; i < list1.size(); i++){
+//                Occurrence occurrence = list1.get(i);
+//                if(topFive.size() < 5){
+//                    topFive.add(occurrence.document);
+//                }
+//            }
+//            System.out.println("contains kw1 but not kw2");
+//            System.out.println("Results:" + topFive);
+//            return topFive;
+//        }
+//        else if(keywordsIndex.containsKey(kw2) && !keywordsIndex.containsKey(kw1)){//contains kw1 but not kw2
+//            for(int i = 0; i < list2.size(); i++){
+//                Occurrence occurrence = list2.get(i);
+//                if(topFive.size() < 5){
+//                    topFive.add(occurrence.document);
+//                }
+//            }
+//            System.out.println("contains kw2 but not kw1");
+//            System.out.println("Results:" + topFive);
+//            return topFive;
+//        }
+//        else{//both are keywords
+//            System.out.println("both are keywords");
+//            ArrayList<Occurrence> occs = new ArrayList<Occurrence>();
+//            occs.addAll(keywordsIndex.get(kw1));
+//            occs.addAll(keywordsIndex.get(kw2));
+//            for(int count = 0; count < 5 && !occs.isEmpty(); count++){
+//                int ptr = 0;
+//                int prev = -1;
+//                for(ptr = 0; ptr < occs.size() && occs.get(ptr) != null; ptr++){
+//                    if (prev == -1){
+//                        if (!topFive.contains(occs.get(ptr).document)) prev = ptr;
+//                    } else if (occs.get(ptr).frequency > occs.get(prev).frequency){
+//                        if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
+//                    } else if (occs.get(ptr).frequency == occs.get(prev).frequency){
+//                        if(keywordsIndex.get(kw1).contains(occs.get(ptr))){
+//                            if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
+//                        }
+//                    }
+//                }
+//                if (prev != -1) topFive.add(occs.remove(prev).document);
+//            }
+//            System.out.println("Result: " + topFive);
+//            return topFive;
+//        }
+        return null;
     }
 
     public static void main(String[] args) {
