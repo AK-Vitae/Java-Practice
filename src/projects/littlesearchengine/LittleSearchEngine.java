@@ -7,8 +7,6 @@ import java.util.*;
  * This class encapsulates an occurrence of a keyword in a document. It stores the
  * document name, and the frequency of occurrence in that document. Occurrences are
  * associated with keywords in an index hash table.
- *
- * @author Sesh Venugopal
  */
 class Occurrence {
     /**
@@ -111,19 +109,19 @@ public class LittleSearchEngine {
             throw new FileNotFoundException("File Not Found!");
         }
         // Create new HashMap and read in file via scanner
-        HashMap<String, Occurrence> keyWords = new HashMap<>();
+        HashMap<String, Occurrence> keyWords = new HashMap<String, Occurrence>();
         Scanner sc = new Scanner(new File(docFile));
         while (sc.hasNext()) {
             String keyWord = getKeyWord(sc.next());
-            if (keyWord != null) {
-                if (keyWords.containsKey(keyWord)) {
-                    // If Hash Map already contains the keyWord then just increase its frequency
-                    keyWords.get(keyWord).frequency++;
-                } else {
-                    // If Hash Map doesn't contain the keyWord then create a new Occurrence
-                    Occurrence occurrence = new Occurrence(docFile, 1);
-                    keyWords.put(keyWord, occurrence);
-                }
+            if (keyWord == null) {
+                continue;
+            } else if (keyWords.containsKey(keyWord)) {
+                // If Hash Map already contains the keyWord then just increase its frequency
+                keyWords.get(keyWord).frequency++;
+            } else {
+                // If Hash Map doesn't contain the keyWord then create a new Occurrence
+                Occurrence occurrence = new Occurrence(docFile, 1);
+                keyWords.put(keyWord, occurrence);
             }
         }
         return keyWords;
@@ -139,17 +137,16 @@ public class LittleSearchEngine {
      * @param kws Keywords hash table for a document
      */
     public void mergeKeyWords(HashMap<String, Occurrence> kws) {
-        //Change this up
-//        for (String key : kws.keySet()) {
-//            ArrayList<Occurrence> oc = new ArrayList<Occurrence>();
-//
-//            if (keywordsIndex.containsKey(key)) {
-//                oc = keywordsIndex.get(key);//if the occurrence already exist in the main key word
-//            }
-//            oc.add(kws.get(key));
-//            insertLastOccurrence(oc);
-//            keywordsIndex.put(key, oc);
-//        }
+        for (String key : kws.keySet()) {
+            ArrayList<Occurrence> occurrence = new ArrayList<Occurrence>();
+            Occurrence frequency = kws.get(key);
+            if (keywordsIndex.containsKey(key)) {
+                occurrence = keywordsIndex.get(key);
+            }
+            occurrence.add(frequency);
+            insertLastOccurrence(occurrence);
+            keywordsIndex.put(key, occurrence);
+        }
     }
 
     /**
@@ -187,7 +184,7 @@ public class LittleSearchEngine {
         if (occs.size() <= 1) {
             return null;
         }
-        ArrayList<Integer> midpointIndices = new ArrayList<>();
+        ArrayList<Integer> midpointIndices = new ArrayList<Integer>();
         Occurrence lastOccurrence = occs.get(occs.size() - 1);
         int lowerBound = 0;
         int upperBound = occs.size() - 2; // Last item (size-1) is excluded
@@ -197,14 +194,14 @@ public class LittleSearchEngine {
             midpointIndices.add(midPoint);
             // Reverse comparison conventions as frequencies are in DESCENDING order
             if (occs.get(midPoint).frequency > lastOccurrence.frequency) {
-                lowerBound = midPoint+1;
+                lowerBound = midPoint + 1;
             } else if (occs.get(midPoint).frequency < lastOccurrence.frequency) {
-                upperBound = midPoint-1;
+                upperBound = midPoint - 1;
             } else if (occs.get(midPoint).frequency == lastOccurrence.frequency) {
                 break;
             }
         }
-        occs.add(midPoint+1,occs.remove(occs.size()-1));
+        occs.add(midPoint + 1, occs.remove(occs.size() - 1));
         return midpointIndices;
     }
 
@@ -223,74 +220,67 @@ public class LittleSearchEngine {
      * the result is null.
      */
     public ArrayList<String> top5search(String kw1, String kw2) {
-//        ArrayList<String> topFive = new ArrayList<>();
-//        // Make keywords into valid search terms
-//        kw1 = kw1.trim().toLowerCase();
-//        kw2 = kw2.trim().toLowerCase();
-//        ArrayList<Occurrence> list1 = keywordsIndex.get(kw1);
-//        ArrayList<Occurrence> list2 = keywordsIndex.get(kw2);
-//        if(!keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//both strings are not found
-//            System.out.println("Both strings are not found");
-//            return null;
-//        }
-//        else if(keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)){//contains kw1 but not kw2
-//            for(int i = 0; i < list1.size(); i++){
-//                Occurrence occurrence = list1.get(i);
-//                if(topFive.size() < 5){
-//                    topFive.add(occurrence.document);
-//                }
-//            }
-//            System.out.println("contains kw1 but not kw2");
-//            System.out.println("Results:" + topFive);
-//            return topFive;
-//        }
-//        else if(keywordsIndex.containsKey(kw2) && !keywordsIndex.containsKey(kw1)){//contains kw1 but not kw2
-//            for(int i = 0; i < list2.size(); i++){
-//                Occurrence occurrence = list2.get(i);
-//                if(topFive.size() < 5){
-//                    topFive.add(occurrence.document);
-//                }
-//            }
-//            System.out.println("contains kw2 but not kw1");
-//            System.out.println("Results:" + topFive);
-//            return topFive;
-//        }
-//        else{//both are keywords
-//            System.out.println("both are keywords");
-//            ArrayList<Occurrence> occs = new ArrayList<Occurrence>();
-//            occs.addAll(keywordsIndex.get(kw1));
-//            occs.addAll(keywordsIndex.get(kw2));
-//            for(int count = 0; count < 5 && !occs.isEmpty(); count++){
-//                int ptr = 0;
-//                int prev = -1;
-//                for(ptr = 0; ptr < occs.size() && occs.get(ptr) != null; ptr++){
-//                    if (prev == -1){
-//                        if (!topFive.contains(occs.get(ptr).document)) prev = ptr;
-//                    } else if (occs.get(ptr).frequency > occs.get(prev).frequency){
-//                        if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
-//                    } else if (occs.get(ptr).frequency == occs.get(prev).frequency){
-//                        if(keywordsIndex.get(kw1).contains(occs.get(ptr))){
-//                            if(!topFive.contains(occs.get(ptr).document)) prev = ptr;
-//                        }
-//                    }
-//                }
-//                if (prev != -1) topFive.add(occs.remove(prev).document);
-//            }
-//            System.out.println("Result: " + topFive);
-//            return topFive;
-//        }
-        return null;
-    }
-
-    public static void main(String[] args) {
-        String myString = "equi-distant";
-        System.out.println(myString);
-        String strippedWord = myString.replaceAll("[^a-zA-Z]+$", "").toLowerCase();
-        System.out.println(strippedWord);
-        if (!strippedWord.matches("[a-zA-Z]+")) {
-            System.out.println(strippedWord + " has punctuation");
-        } else {
-            System.out.println(strippedWord);
+        ArrayList<String> topFive = new ArrayList<String>();
+        // Make keywords into valid search terms
+        kw1 = kw1.trim().toLowerCase();
+        kw2 = kw2.trim().toLowerCase();
+        // Create list of occurrences using the keywords and the master index
+        ArrayList<Occurrence> kw1List = keywordsIndex.get(kw1);
+        ArrayList<Occurrence> kw2List = keywordsIndex.get(kw2);
+        // Keywords cases
+        if (keywordsIndex.isEmpty()) {
+            return null;
+        } else if (!keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)) {//Both keywords are not found in merged index
+            return null;
+        } else if (keywordsIndex.containsKey(kw1) && !keywordsIndex.containsKey(kw2)) {//Keyword 2 is not found in merged index
+            for (Occurrence occurrence : kw1List) {
+                if (topFive.size() < 5) {
+                    topFive.add(occurrence.document);
+                }
+            }
+            return topFive;
+        } else if (keywordsIndex.containsKey(kw2) && !keywordsIndex.containsKey(kw1)) {//Keyword 1 is not found in merged index
+            for (Occurrence occurrence : kw2List) {
+                if (topFive.size() < 5) {
+                    topFive.add(occurrence.document);
+                }
+            }
+            return topFive;
+        } else {//Both are valid keywords
+            ArrayList<Occurrence> mergedOccurrences = new ArrayList<Occurrence>();
+            mergedOccurrences.addAll(keywordsIndex.get(kw1));
+            mergedOccurrences.addAll(keywordsIndex.get(kw2));
+            //Use pointers
+            int capacity = 0;
+            while(capacity < 5 && !mergedOccurrences.isEmpty()) {
+                int curr = 0;
+                int prev = -1;
+                boolean contains;
+                while (curr < mergedOccurrences.size() && mergedOccurrences.get(curr) != null) {
+                    contains = topFive.contains(mergedOccurrences.get(curr).document);
+                    if (prev == -1) {
+                        if (!contains) {
+                            prev = curr;
+                        }
+                    } else if (mergedOccurrences.get(curr).frequency > mergedOccurrences.get(prev).frequency) {
+                        if (!contains) {
+                            prev = curr;
+                        }
+                    } else if (mergedOccurrences.get(curr).frequency == mergedOccurrences.get(prev).frequency) {
+                        if (keywordsIndex.get(kw1).contains(mergedOccurrences.get(curr))) {
+                            if (!contains) {
+                                prev = curr;
+                            }
+                        }
+                    }
+                    curr++;
+                }
+                if (prev != -1) {
+                    topFive.add(mergedOccurrences.remove(prev).document);
+                }
+                capacity++;
+            }
+            return topFive;
         }
     }
 }
