@@ -144,3 +144,32 @@ h = height of tree
 N = size of the array
 
 n = number of entries
+
+## Graph Traversal
+
+| Traversal            | Worst Case |
+| -------------------- | ---------- |
+| Depth-First Search   | O(n + e)   |
+| Breadth-First Search | O(n + e)   |
+
+n = number of vertices in the graph
+
+e = number of edges in the graph
+
+
+
+## Dijkstra's Shortest Path Algorithm
+
+| Case                                                         | Worst Case             |
+| ------------------------------------------------------------ | ---------------------- |
+| Vertices are stored in a linked list or array (simplest version) | O(n<sup>2</sup>)       |
+| Graph is stored as an adjacency list (Dense Graphs)          | O(n<sup>2</sup> log n) |
+| Graph is stored as an adjacency list (Sparse Graphs)*        | O(e + n log n)         |
+| Graph is stored as an adjacency list (Connected Sparse Graphs)* | O(e log n)             |
+| Fibonacci Optimization                                       | O(e + n log n)         |
+
+*a self-balancing binary search tree, binary heap, pairing heap, or Fibonacci heap as a priority queue is used to implement extracting minimum efficiently.
+
+n = number of vertices in the graph
+
+e = number of edges in the graph
