@@ -173,3 +173,20 @@ e = number of edges in the graph
 n = number of vertices in the graph
 
 e = number of edges in the graph
+
+
+
+## Sorting
+
+| Algorithm      | Best Case  | Average Case     | Worst Case       |
+| -------------- | ---------- | ---------------- | ---------------- |
+| Insertion Sort | O(n)       | O(n<sup>2</sup>) | O(n<sup>2</sup>) |
+| Merge Sort     | O(n log n) | O(n log n)       | O(n log n)       |
+| Quick Sort     | O(n log n) | O(n log n)       | O(n<sup>2</sup>) |
+| Heap Sort      | O(n log n) | O(n log n)       | O(n log n)       |
+| Tree Sort      | O(n log n) | O(n log n)       | O(n<sup>2</sup>) |
+
+**Insertion sort** is a good sorting algorithm to use if the input list is already mostly sorted (More stable and requires less memory)
+
+**Quick sort** can be optimized by using random pivot selection and has a very low memory requirement. 
+
