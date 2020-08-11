@@ -46,3 +46,11 @@ Properties of a Heap:
 
 Heap sort is a comparison based sorting technique based on Binary Heap data structure. It is similar to selection sort where we first find the maximum element and place the maximum element at the end. We repeat the same process for remaining element. The same logic applies to finding the minimum. 
 
+Build the Heap from an array and then delete items from the heap and the end result will be sorted.
+
+## Heapify
+
+* Start with the input array that contains the list of entries to be sorted
+* Begin with leaf node by basically starting with right most entry in the array and work leftwards
+* See if node in question can be sift down
+* After sifting the array will be sorted in O(n) time
