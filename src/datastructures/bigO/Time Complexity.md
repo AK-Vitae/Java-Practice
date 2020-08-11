@@ -121,8 +121,10 @@ h = height of tree
 
 | Operation | Average Case | Worst Case                          |
 | --------- | ------------ | ----------------------------------- |
-| Sift Down | O(log n)     | O(1) + O(log n) = O(log n)          |
+| Insert    |              | O(log n) due to Sift Up             |
+| Delete    |              | O(log n) due to Sift Down           |
 | Sift Up   | O(log n)     | O(log n)                            |
+| Sift Down | O(log n)     | O(1) + O(log n) = O(log n)          |
 | heapSort  | O(n log n)   | n steps of extraction = O (n log n) |
 
 ## Hash Table
