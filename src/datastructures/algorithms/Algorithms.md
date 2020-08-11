@@ -1,5 +1,55 @@
 # Algorithms
 
+## Depth-First Search (DFS)
+
+```
+visit v and mark v as visited
+for each neighbor w of v do
+	if (w is not visited) then
+		DFS(w)
+	endif
+endfor
+```
+
+## Breadth-First Search (BFS)
+
+```
+visit v and mark v as visited
+add v to the queue
+while the queue is not empty do
+	w <- vertex at the front of the queue
+	delete w from the queue
+	for each neighbor p of w do
+		if (p is not visited) then
+			visit p and mark p as visited
+			add p to the queue
+		endif
+	endfor
+endwhile
+```
+
+## DFS Topological Sort
+
+```
+topnum <-n
+	for each vertex v in the graph do
+		if (v is not visited) then
+		DFStopsort( v, topnum )
+	endif
+endfor
+
+DFStopsort(v, topnum)
+visit and mark v as visited
+for each neighbor w of v do
+	if (w is not visted) then
+		DFStopsort(w, topnum)
+	endif
+endfor
+number v with topnum
+topnum <- topnum - 1
+
+```
+
 ## Merge Sort
 
 ```java
@@ -51,8 +101,6 @@
         }
     }
 ```
-
-
 
 ## Quick Sort
 
