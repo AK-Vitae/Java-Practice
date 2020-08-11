@@ -1,0 +1,19 @@
+directed
+7
+A
+B
+C
+D
+E
+P
+X
+A B
+A C
+A X
+B D
+B E
+C D
+D E
+D P
+P X
+X C
