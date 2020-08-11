@@ -126,6 +126,7 @@ h = height of tree
 | Sift Up   | O(log n)     | O(log n)                            |
 | Sift Down | O(log n)     | O(1) + O(log n) = O(log n)          |
 | heapSort  | O(n log n)   | n steps of extraction = O (n log n) |
+| heapify   |              | O(n)                                |
 
 ## Hash Table
 
@@ -146,6 +147,17 @@ h = height of tree
 N = size of the array
 
 n = number of entries
+
+## Graph Representations
+
+| Representation   | Space Complexity | Add Vertex       | Add Edge | Remove Vertex    | Remove Edge | Query |
+| ---------------- | ---------------- | ---------------- | -------- | ---------------- | ----------- | ----- |
+| Adjacency Matrix | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(1)     | O(n<sup>2</sup>) | O(1)        | O(1)  |
+| Adjacency List   | O(n + e)         | O(1)             | O(1)     | O(n + e)         | O(e)        | O(n)  |
+
+n = number of vertices in the graph
+
+e = number of edges in the graph
 
 ## Graph Traversal
 
