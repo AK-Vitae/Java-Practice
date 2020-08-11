@@ -1,8 +1,8 @@
-# Algorithms
+package datastructures.sorting;
 
-## Merge Sort
+import java.util.Arrays;
 
-```java
+public class MergeSort {
     public void mergeSort(int[] array, int low, int high) {
         if (high <= low) {
             return;
@@ -50,43 +50,14 @@
             }
         }
     }
-```
 
-
-
-## Quick Sort
-
-```java
-    //selects last element as pivot.
-    public int partition(int[] intArray, int low, int high) {
-        int pivot = intArray[high];
-        int i = (low - 1); // smaller element index
-        for (int j = low; j < high; j++) {
-            // check if current element is less than or equal to pivot
-            if (intArray[j] <= pivot) {
-                i++;
-                // swap intArray[i] and intArray[j]
-                int temp = intArray[i];
-                intArray[i] = intArray[j];
-                intArray[j] = temp;
-            }
-        }
-        // swap intArray[i+1] and intArray[high] (or pivot)
-        int temp = intArray[i + 1];
-        intArray[i + 1] = intArray[high];
-        intArray[high] = temp;
-        return i + 1;
+    public static void main(String[] args) {
+        int[] array = new int[]{5, 6, 7, 2, 4, 1, 33, 3, 15, 70, -3, -7};
+        MergeSort obj = new MergeSort();
+        int low = 0;
+        int high = array.length-1;
+        obj.mergeSort(array, low, high);
+        System.out.println(Arrays.toString(array));
     }
-    
-    //routine to sort the array partitions recursively
-    public void quickSort(int[] intArray, int low, int high) {
-        if (low < high) {
-            //partition the array around pivot=>partitioning index and return pivot
-            int pivot = partition(intArray, low, high);
-            // sort each partition recursively
-            quickSort(intArray, low, pivot - 1);
-            quickSort(intArray, pivot + 1, high);
-        }
-    }
-```
 
+}
