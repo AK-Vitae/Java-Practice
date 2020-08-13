@@ -69,3 +69,8 @@
 
 * **Chaining:** The entries are inserted as **nodes in a linked list**. The hash table itself is an array of head pointers.
 * **Load Factor** = n/N = Number of elements in the array/Size of the array
+
+**Rehashing:** Process by which a hash table's capacity is increased
+
+* In java the default load factor is 0.75
+* When load factor threshold is exceeded the hash table will rehash
