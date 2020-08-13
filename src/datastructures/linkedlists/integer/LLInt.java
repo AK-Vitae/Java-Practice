@@ -86,14 +86,40 @@ public class LLInt {
     public static IntNode removeLast(IntNode head) {
         IntNode current = head;
         IntNode previous = null;
-        if (current.next == null){ // List only has one node
+        if (current == null){ // Empty list
             return null;
         }
-        while (current.next!=null){ // Traverse
+        if (current.next == null) { // List only has one node
+            return null;
+        }
+        while (current.next != null) { // Traverse
             previous = current;
             current = current.next;
         }
         previous.next = null; // Removes link to last node
+        return head;
+    }
+
+    public static void deleteLast(IntNode head) {
+        IntNode ptr = head;
+        if (ptr == null)
+            return;
+        while (ptr.next.next != null)
+            ptr = ptr.next;
+        ptr.next = null;
+    }
+
+    public static IntNode deleteLastImproved(IntNode head) {
+        if (head == null) { // Empty List
+            return null;
+        }
+        if (head.next == null) { // List of 1 item
+            return null;
+        }
+        IntNode ptr = head;
+        while (ptr.next.next != null)
+            ptr = ptr.next;
+        ptr.next = null;
         return head;
     }
 
@@ -119,8 +145,10 @@ public class LLInt {
         System.out.println(displayList(front));
         front = remove(front, 27);
         System.out.println(displayList(front));
-        removeLast(front);
-        System.out.println(displayList(front));
+        deleteLast(front);
+        System.out.println(displayList(front)+" Gappu");
+        front = deleteLastImproved(front);
+        System.out.println(displayList(front)+"List is now empty");
     }
 
 }
