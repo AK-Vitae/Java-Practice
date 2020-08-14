@@ -73,7 +73,3 @@ A graph **G** is an ordered pair of a set **V** of vertices and a set **E** of e
 * **Vertex List with an associated linked list of neighbors**
 * No wastage of space however there is **loss of random access**.
 
-
-
-## Graph Traversal
-
