@@ -71,7 +71,8 @@ More conditional statements related to p ⇒ q ("It raining is a sufficient cond
 | Contrapositive | ¬q ⇒ ¬p | **if** not q **then** not p | If it is not raining, then I will go to town. |
 | Inverse        | ¬p ⇒ ¬q | **if** not p **then** not q | If I go to town, then it is not raining.      |
 
-
+* Always first write statements in if then form
+* Contrapositive will have the same truth values as p ⇒ q
 
 ## Truth Tables
 * A representation of all the combinations of logical operators can be done through a tool called a "Truth Table" which can tell us the values of the propositions
@@ -84,7 +85,7 @@ More conditional statements related to p ⇒ q ("It raining is a sufficient cond
   * Need a column for the truth value of each expression that occurs in the compound proposition as it is built up.
 
 * Truth Tables:
-   * Proposition vs Negation
+  * Proposition vs Negation
 
   |   p    |   ¬p  |
   |--------|-------|
@@ -129,12 +130,23 @@ More conditional statements related to p ⇒ q ("It raining is a sufficient cond
 
   * Biconditional
 
-  |   p    |   q   | p ⇔ q |
-  |--------|-------|-------|
-  |    T   |   T   |   T   |
-  |    T   |   F   |   T   |
-  |    F   |   T   |   T   |
-  |    F   |   F   |   T   |
+  | p    | q    | p ⇔ q |
+  | ---- | ---- | ----- |
+  | T    | T    | T     |
+  | T    | F    | T     |
+  | F    | T    | T     |
+  | F    | F    | T     |
 
 
+### Precedence of Logical Operators
 
+| Operator | Precedence |
+| -------- | ---------- |
+| ¬        | 1          |
+| ∩<br/>∪  | 2<br/>3    |
+| ⇒<br/>⇔  | 4<br/>5    |
+
+### Compound Propositions
+
+* Rows: Need a row for every possible combination of values for the compound propositions which in turn would be 2^propositions^ .
+* Columns: Need a column for each proposition variable, need a column for the truth value of each expression that occurs in the compound proposition as it is built up, and need a column for the compound proposition. 
