@@ -1,7 +1,5 @@
 # Sequences
 
-$\sum_{n=1}^{\infty} 2^{-n}$
-
 * An ordered list of elements created by a function mapping the integers to a set S
 * Notation: a<sub>n</sub> represents the nth term
 
