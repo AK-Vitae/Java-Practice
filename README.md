@@ -16,3 +16,9 @@ Text Editor: Visual Studio Code
 [Expression Evaluator](https://github.com/AK-Vitae/Java-Practice/tree/master/src/projects/expression)
 
 [Text Search Engine](https://github.com/AK-Vitae/Java-Practice/tree/master/src/projects/littlesearchengine)
+
+## Notes
+
+[Data Structures](https://github.com/AK-Vitae/Java-Practice/tree/master/src/datastructures/notes)
+
+[Discrete Structures](https://github.com/AK-Vitae/Java-Practice/tree/master/src/discretestructures)

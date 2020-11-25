@@ -66,7 +66,7 @@ After final merge:
 | --------- | ---- |
 | Character | root |
 
-![Huffman Tree](https://github.com/AK-Vitae/Java-Practice/blob/master/src/datastructures/trees/huffman/Huffman%20Tree.png)
+![Huffman Tree](https://github.com/AK-Vitae/Java-Practice/blob/master/src/datastructures/notes/Huffman%20Tree.png)
 
 ### Encoding of Each Character
 
