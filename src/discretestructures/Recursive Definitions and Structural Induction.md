@@ -179,4 +179,3 @@ Inductive Proof:
 |            = | a^k+1^       | Properties of exponents |
 
 $\therefore$ Algorithm is correct
-
