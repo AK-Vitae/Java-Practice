@@ -1383,7 +1383,53 @@ $\therefore p\{if\space condition\space then\space S_1\space else\space S_2\}q$ 
   * p is true AND condition is false
 * $\therefore$ p{while condition S}(¬ condition ∧ p)
 
+**ex**. Consider the following function foo. The function takes an array of integers and perform some computation.
 
+```java
+int foo(int[] a){
+	int i=0, c=0, k=1;
+	int n = a.length;
+	while (i < n) {
+		a[i] = c;
+		c = c + k;
+		k = k + 2;
+		i = i + 1;}
+}
+```
+
+Find and prove the loop invariants.
+
+$i^2 = c$
+
+$k = 2i+1$
+
+$i \leq n$
+
+Prior to first iteration of the loop:
+
+$i, c = 0$ and $k = 1$ 
+
+​	$\therefore c = i^2 \equiv 0=0$
+
+​		$k = 2i+1 \equiv 1=1 $
+
+​		$i < n$
+
+During iterations:
+
+​	$i_{new} = i+1$
+
+​	$i_{new}^2 = (i+1)^2 = i^2+2i+1$
+
+​	$c_{new} = c+k$, now need to show that $i_{new}^2 = c_{new}$ by showing that $k_{new} = 2i_{new}+1$
+
+​	$k_{new} = 2i+1\equiv k+2=2(i+1)+1; i+1 = i++$ 
+
+​	Since $k = 2i+1$
+
+​		$(2i+1)+2=2(i+1)+1 \equiv 2i+3=2i+3$
+
+​	$\therefore i^2 = c$ and $k = 2i+1$ are loop invariants
 
 # Languages and Grammars
 
