@@ -1,4 +1,4 @@
-package introduction.static_methods;
+package introduction.staticmethods;
 
 public class Equal {
     //Takes two int arrays and returns true if the arrays are the same length, and have the same corresponding values

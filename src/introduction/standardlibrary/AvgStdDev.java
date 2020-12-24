@@ -1,4 +1,4 @@
-package introduction.standard_library;
+package introduction.standardlibrary;
 
 import introduction.standard.StdIn;
 

@@ -1,4 +1,4 @@
-package introduction.static_methods;
+package introduction.staticmethods;
 
 import introduction.standard.StdOut;
 

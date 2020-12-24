@@ -1,4 +1,4 @@
-package introduction.conditionals_and_loops;
+package introduction.conditionalsloops;
 
 public class MultiplyTwo{
     public static void main(String[] args) {
