@@ -104,24 +104,26 @@ A(MINI WORLD)-->B[REQUIREMENTS COLLECTION AND ANALYSIS]
   * **Candidate Key:** minimal set of attributes that uniquely identifies an element 
     * **Minimal**: If an attribute is removed from a set then there is not enough information to uniquely identify the element.
     * ex. name alone can't identify an employee but name and phone number might
-  * Primary Key:
+  * **Primary Key:**
     * The chosen candidate key will be enforced by the DBMS
     * The primary key attributes will be **underlined in their circles**
     * Every entity set must have a primary key
   * Rectangle with element
 * **Attributes**: Aspects of an elements
-  * Circles = **Single Attribute** (ex. Name)
-  * Double Border Circles = **Multivalued Attributes** (ex. Phone Numbers)
-  * Circles with child circles = **Composite Attributes** (ex. Address)
-  * Dotted Circle = **Derived Attribute**: computed from the other attributes in the entity set (ex. age calculated form date of birth attribute)
+  * **Circles** = **Single Attribute** (ex. Name)
+  * **Double Border Circles** = **Multivalued Attributes** (ex. Phone Numbers)
+  * **Circles with child circles** = **Composite Attributes** (ex. Address)
+  * **Dotted Circle** = **Derived Attribute**: computed from the other attributes in the entity set (ex. age calculated form date of birth attribute)
 * **Domain**: Need to specify if attributes aren't clear
 * **Relationship**: Connection between Entity Sets
-  * Represented by a diamond
+  * Represented by a **diamond**
   * Attributes can be added to the relationship
 * **Cardinality**:
-  * Many to Many:
-  * Many to One/One to Many:
-  * One to One:
+  * Many to Many
+  * One to Many: Every element from A is related to at most one element from B (-> at most one)
+    * ex. Professor can teach many courses, but a course is taught by 1 professor
+  * One to One: Each element from A is related to at most one element from B and each element from B is related to at most one element from A
+    * ex. A Professor can only have one office, and a office can only have one professor
 
 ex. Employees work for Departments
 
@@ -131,4 +133,44 @@ ex. Employees work for Departments
 * Each department can have many employees
 
 ![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Employee-Departments%20ER%20Diagram%20.png)
+
+* **Participation Constraints:**
+  * **Total**: Every Element from one side must participate in the relation ship 
+    * Represented by a **thick line** = at least one
+    * A total one to many relationship = at least one element and at most one element = exactly one = thick line with arrow
+  * **Partial**: **Normal Line**
+* **Assumptions**: Include in diagram to help determine decisions.
+* **Cardinality Notation**:
+  * min . . max / at least . . at most
+    * Partial Participation Constraint (Normal Line)  = 0 . . N
+    * Total Participation Constraint (Thick Line) = 1 . . N
+    * Partial Participation Constraint with Arrow (Normal Line with Arrow) = 0 . . 1
+    * Total Participation Constraint with Arrow (Thick Line with Arrow) = 1 . . 1
+  * Put on a Normal Line to relationship
+  * Always use arrow notation unless it is necessary  to use cardinality notation
+
+* **Roles**: Used when an Element uses a relationship to itself
+  * Place roles on respective lines
+
+### ISA Hierarchy
+
+* Inheritance
+* Used to factor out common attributes
+* Used to divide in sets (subsets)
+* **Triangle with "ISA" in it**
+* ISA property (test): Child element "is a" subset of the Parent element
+* **Constraints**:
+  * Written next to ISA triangle as **{Covering Constraint Type, Overlap Constraint Type}**
+  * **Covering**: Will sets cover all possible elements?
+    * Complete: Yes
+    * Partial: No
+  * **Overlap:** Do sets overlap?
+    * Disjoint: No
+    * Overlapping: Yes
+
+ex. Cardinality Notation for the following description:
+
+A veterinary hospital only treats dogs and cats (use ISA). Clients have an address, phone number and client ID. Each pet has a name, a pet ID and belongs to exactly one client. Each client can have at most 5 cats and 2 dogs. 
+
+![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Pet(Cat%26Dog)-Client%20ER%20Diagram.jpg)
 
