@@ -136,8 +136,8 @@ ex. Employees work for Departments
 
 * **Participation Constraints:**
   * **Total**: Every Element from one side must participate in the relation ship 
-    * Represented by a **thick line** = at least one
-    * A total one to many relationship = at least one element and at most one element = exactly one = thick line with arrow
+    * Represented by a **thick line = at least one**
+    * A total one to many relationship = at least one element and at most one element = **exactly one = thick line with arrow**
   * **Partial**: **Normal Line**
 * **Assumptions**: Include in diagram to help determine decisions.
 * **Cardinality Notation**:
@@ -173,4 +173,44 @@ ex. Cardinality Notation for the following description:
 A veterinary hospital only treats dogs and cats (use ISA). Clients have an address, phone number and client ID. Each pet has a name, a pet ID and belongs to exactly one client. Each client can have at most 5 cats and 2 dogs. 
 
 ![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Pet(Cat%26Dog)-Client%20ER%20Diagram.jpg)
+
+### Weak Entity Sets
+
+* Entity set that **does not have its own keys (primary keys)**
+* Will take the keys from another Entity Set
+* Will be a **double border rectangle**
+* Identifying relationship = **double border diamond**
+* Weak entity set has a **Total Participation Constraint with an Arrow** (<==)
+
+### Design Considerations
+
+* Entity set vs Attribute
+  * Multivalued attributes may cause problems with redundancy
+  * Better to just use them as another entity set
+  * E-R diagram not unique for every situation
+* Attribute vs Relationship
+  * Using an attribute or having an entity have a relationship with itself
+
+### N-ary Relationships
+
+* Some relationships are ill conceived and can be better represented in a binary relationship
+* N-ary relationp -> Binary Relationship:
+  * Change central relationship into a weak entity set
+  * Have the weak entity set connected exactly one to each entity set (Identifying Relationship)
+  * Process called **Reification**
+
+ex. Convert a Part, Project, and Maker relationship into a binary relationship
+
+1. Add a couple of attributes to each entity set
+2. Use Reification to transform it into a diagram with only binary relationships
+
+![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Part-Project-Maker%20Diagram.jpg)
+
+### Aggregation
+
+* Trying to connect a relationship to another relationship
+* Draw a dotted line around the central relationship to have it treated as one entity.
+* Then use reification to achieve the proper diagram
+
+
 
