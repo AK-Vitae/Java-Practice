@@ -174,6 +174,8 @@ A veterinary hospital only treats dogs and cats (use ISA). Clients have an addre
 
 ![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Pet(Cat%26Dog)-Client%20ER%20Diagram.jpg)
 
+
+
 ### Weak Entity Sets
 
 * Entity set that **does not have its own keys (primary keys)**
@@ -181,6 +183,47 @@ A veterinary hospital only treats dogs and cats (use ISA). Clients have an addre
 * Will be a **double border rectangle**
 * Identifying relationship = **double border diamond**
 * Weak entity set has a **Total Participation Constraint with an Arrow** (<==)
+* Weak entity sets can help contribute to a primary key with a **partial key = dashed underline**
+
+ex. E-R Diagram for the following:
+
+* Book
+
+  * authors
+  * title
+  * date
+
+* BookEdition
+
+  * publisher
+  * format
+  * date
+  * Note: There is no primary key here
+
+* BookCopy (needs to inherit attributes from book)
+
+  * callNumber
+  * location
+  * copyNumber
+
+* **Note: Subclasses does not automatically make some thing comply with IsA inheritance.** 
+
+* Need to use the IsA test
+
+  ![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Book-BookEdition-BookCopy%20ER%20Diagram.jpg)
+
+* Concept shown is called **Manifestation**
+
+  * BookEdition is a manifestation of a book
+  * BookCopy is a manifestation of a BookEdition
+
+
+
+ex. We want to keep track of expenses of Employees on their dependent's health insurance policies
+
+* Weak Entity to Entity
+
+![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/WeakEntity-Entity%20ER%20Diagram.jpg)
 
 ### Design Considerations
 
@@ -212,5 +255,52 @@ ex. Convert a Part, Project, and Maker relationship into a binary relationship
 * Draw a dotted line around the central relationship to have it treated as one entity.
 * Then use reification to achieve the proper diagram
 
+## Relational Model
 
+* Everything is a relation
+* Relations = Tables
+  * First Row: **Header (Schema)**
+  * Column Names = **Fields**
+  * Each Row = **Tuples**
+  * Content below header = **Instance; is dynamic**
+
+ex. Student Table/Relation
+
+|  id  | name  | age  |
+| :--: | :---: | :--: |
+| 5275 | Smith |  18  |
+| 2653 | Guldu |  22  |
+| 5463 | Jones |  18  |
+
+Schema: Student(id: integer, name: varchar(50), age: integer)
+
+* Domains:
+  * int/integer
+  * double/float
+  * varchar(n) = string of length at most n
+  * char(n) = string of length exactly equal to n
+  * date
+  * time
+  * datetime
+
+ex. Write the relation database schema for a Company that has employees who have a SSN, name, phone, date  of birth and work for departments (remember that you need a table for worksFor). Departments have a name, a phone, and a location
+
+
+
+### Properties of Relations
+
+* **Degree/r-aty of relation** = number of fields
+* **Number of tuples** = cardinality
+* **Instances of Relations are sets**
+  * No duplicates are allowed
+  * Note: Some DBMS will allows some duplicates
+
+* Relational Database
+  * Collection of relations with distinct names
+
+### Integrity Constraints (IC)
+
+* DBMS enforces them
+* Domain Constraint: Prevent entry of incorrect data
+* Might make changes to enforce IC
 
