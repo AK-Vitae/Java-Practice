@@ -132,7 +132,7 @@ ex. Employees work for Departments
 * Each employee cannot work for more than one department
 * Each department can have many employees
 
-![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Employee-Departments%20ER%20Diagram%20.png)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Employee-Departments ER Diagram .png)
 
 * **Participation Constraints:**
   * **Total**: Every Element from one side must participate in the relation ship 
@@ -172,7 +172,7 @@ ex. Cardinality Notation for the following description:
 
 A veterinary hospital only treats dogs and cats (use ISA). Clients have an address, phone number and client ID. Each pet has a name, a pet ID and belongs to exactly one client. Each client can have at most 5 cats and 2 dogs. 
 
-![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Pet(Cat%26Dog)-Client%20ER%20Diagram.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Pet(Cat&Dog)-Client ER Diagram.jpg)
 
 
 
@@ -210,7 +210,7 @@ ex. E-R Diagram for the following:
 
 * Need to use the IsA test
 
-  ![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Book-BookEdition-BookCopy%20ER%20Diagram.jpg)
+  ![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Book-BookEdition-BookCopy ER Diagram.jpg)
 
 * Concept shown is called **Manifestation**
 
@@ -223,7 +223,7 @@ ex. We want to keep track of expenses of Employees on their dependent's health i
 
 * Weak Entity to Entity
 
-![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/WeakEntity-Entity%20ER%20Diagram.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\WeakEntity-Entity ER Diagram.jpg)
 
 ### Design Considerations
 
@@ -247,7 +247,7 @@ ex. Convert a Part, Project, and Maker relationship into a binary relationship
 1. Add a couple of attributes to each entity set
 2. Use Reification to transform it into a diagram with only binary relationships
 
-![](https://github.com/AK-Vitae/Java-Practice/blob/master/src/databases/Pictures%20for%20Notes/Part-Project-Maker%20Diagram.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Part-Project-Maker Diagram.jpg)
 
 ### Aggregation
 
@@ -282,6 +282,7 @@ Schema: Student(id: integer, name: varchar(50), age: integer)
   * date
   * time
   * datetime
+  * boolean
 
 ex. Write the relation database schema for a Company that has employees who have a SSN, name, phone, date  of birth and work for departments (remember that you need a table for worksFor). Departments have a name, a phone, and a location
 
@@ -301,6 +302,81 @@ ex. Write the relation database schema for a Company that has employees who have
 ### Integrity Constraints (IC)
 
 * DBMS enforces them
+
 * Domain Constraint: Prevent entry of incorrect data
+
 * Might make changes to enforce IC
 
+  
+
+## ER Diagrams into Relational Models
+
+### Many-to-Many
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Many-to-Many Transformation.jpg)
+
+**Relational Model**
+
+* relationship must have primary keys **from all involved entities**
+
+```
+Students(sid: int, name: varchar(50), age: int, gpa: float, primaryKey(sid))
+Courses(cid: varchar(7), title: varchar(30), dept: varchar(4), primaryKey(cid))
+enrolledIn(sid: int, cid: varchar(7), grade: varchar(2), primaryKey(sid, cid), 
+	foreignKey(sid) references Students, foreignKey(cid) references Courses)
+```
+
+
+
+### Reflexive
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Reflexive Transformation.jpg)
+
+* **NOTE: Always remember to consider assumptions and domains**
+
+**Relational Model**
+
+```
+Employee(eId: int, name: varchar(50), primaryKey(eId))
+manages(manager-eId: int, subordinate-eId: int, from: date, till: date, 
+	primaryKey(manager-eId, subordinate-eId), foreignKey(manager-eId) references Employee,
+	foreignKey(subordinate-eId) references Employee)
+```
+
+### One-to-Many
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational One-to-Many Transformation.jpg)
+
+**Relational Model**
+
+* relationship must have primary keys **from entities with arrows**
+
+```
+Car(vin: varchar(20), color: varchar(10), primaryKey(vin))
+Person(pid: int, age: int, primaryKey(pid))
+ownedBy(vin: varchar(20), pid: int, since: date, primaryKey(vin), 
+	foreignKey(vin) references Car, foreignKey(pid) references Person)
+```
+
+### One-to-One
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational One-to-One Transformation.jpg)
+
+**Relational Model**
+
+* relationship will get primary key from **any single entity involved (this can be further specified via thickness of arrows)**
+
+```
+Person(pid: int, name: varchar(50), age: int, primaryKey(pid))
+Office(building: varchar(20), number: int, sqft: int, primarKey(building, number))
+Assigned(pid: int, building: varchar(20), number: int, since: date, primaryKey(pid), 
+	foreignKey(pid) references Person, foreignKey(building, number) references Office)
+```
