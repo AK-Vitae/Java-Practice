@@ -141,7 +141,7 @@ ex. Employees work for Departments
   * **Partial**: **Normal Line**
 * **Assumptions**: Include in diagram to help determine decisions.
 * **Cardinality Notation**:
-  * min . . max / at least . . at most
+  * min / at least . . max / at most
     * Partial Participation Constraint (Normal Line)  = 0 . . N
     * Total Participation Constraint (Thick Line) = 1 . . N
     * Partial Participation Constraint with Arrow (Normal Line with Arrow) = 0 . . 1
@@ -302,12 +302,69 @@ ex. Write the relation database schema for a Company that has employees who have
 ### Integrity Constraints (IC)
 
 * DBMS enforces them
-
 * Domain Constraint: Prevent entry of incorrect data
-
 * Might make changes to enforce IC
 
-  
+#### Primary Key (PK)
+
+* Are unique
+
+* **Candidate Key:**  A minimal set of fields that uniquely identifies a tuple
+  * A primary key is a chosen candidate key that is enforced by the DBMS
+* Primaries keys are stored in B+Trees
+* Notations:
+  * **PK has several attributes**: Students(sid: int, dob: date, name: varchar(50), primary key (sid))
+  * **PK with only one field**: Students(sid: int primary key, dob: date, name: varchar(50))
+  * **Informal/Only for examples:** Students(<u>sid</u>, dob, name) - Underlined is the PK
+
+#### Foreign Key (FK)
+
+* Set of fields that makes a reference to a PK of another table
+
+* Example:
+
+  Students(<u>sid</u>, name, age, gpa)
+
+  EnrolledIn(<u>sid</u>, cid, grade, foreign key (sid) references Students)
+
+**Properties:**
+
+1. **Same or compatible domains**
+
+   A(f1, f2, f3, f4, primary key(f2, f3))
+
+   B(g1, g2, g3, g4, g5, primary key(g1, g3), foreign key(g3, g4) references A)
+
+   g3 and g4 actually reference f2 and f3 respectively. **Domain is same or compatible**
+
+2. **FK making a reference to the same table**
+
+   person(ssn, name, parent, primary key(ssn), foreign key(parent) references person)
+
+   parent in this case is a ssn of another person
+
+#### Referential Integrity Constraints
+
+* **Insertion operation:** Inserting a tuple into table
+  * DBMS will Reject/**Restrict** as tuple does not exist in referenced table
+* **Deletion operation:** Deleting from a table (source table)
+  * DBMS will Reject/**Restrict** as tuple in referencing table will reference nothing
+  * **Cascade**: DBMS will also delete the tuple that includes the reference from referencing table
+  * **set NULL**: Replace the reference with NULL or null value
+  * **set default**
+* **Update operation**: Updating source table
+  * Restrict/Reject
+  * Cascade the change
+  * set NULL
+  * set default
+* Operations will be specified in the schema (default action is restrict)
+  * on delete _
+  * on update _
+  * on insert _
+
+ex.
+
+![Referential Integrity Constraints Example](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Referential Integrity Constraints Example.jpg)
 
 ## ER Diagrams into Relational Models
 
@@ -315,7 +372,7 @@ ex. Write the relation database schema for a Company that has employees who have
 
 **ER Diagram**
 
-![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Many-to-Many Transformation.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational Many-to-Many Transformation.jpg)
 
 **Relational Model**
 
@@ -334,7 +391,7 @@ enrolledIn(sid: int, cid: varchar(7), grade: varchar(2), primaryKey(sid, cid),
 
 **ER Diagram**
 
-![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Reflexive Transformation.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational Reflexive Transformation.jpg)
 
 * **NOTE: Always remember to consider assumptions and domains**
 
@@ -343,7 +400,8 @@ enrolledIn(sid: int, cid: varchar(7), grade: varchar(2), primaryKey(sid, cid),
 ```
 Employee(eId: int, name: varchar(50), primaryKey(eId))
 manages(manager-eId: int, subordinate-eId: int, from: date, till: date, 
-	primaryKey(manager-eId, subordinate-eId), foreignKey(manager-eId) references Employee,
+	primaryKey(manager-eId, subordinate-eId), 
+	foreignKey(manager-eId) references Employee,
 	foreignKey(subordinate-eId) references Employee)
 ```
 
@@ -351,7 +409,7 @@ manages(manager-eId: int, subordinate-eId: int, from: date, till: date,
 
 **ER Diagram**
 
-![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational One-to-Many Transformation.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational One-to-Many Transformation.jpg)
 
 **Relational Model**
 
@@ -360,15 +418,17 @@ manages(manager-eId: int, subordinate-eId: int, from: date, till: date,
 ```
 Car(vin: varchar(20), color: varchar(10), primaryKey(vin))
 Person(pid: int, age: int, primaryKey(pid))
-ownedBy(vin: varchar(20), pid: int, since: date, primaryKey(vin), 
-	foreignKey(vin) references Car, foreignKey(pid) references Person)
+ownedBy(vin: varchar(20), pid: int, since: date, 
+	primaryKey(vin), 
+	foreignKey(vin) references Car, 
+	foreignKey(pid) references Person)
 ```
 
 ### One-to-One
 
 **ER Diagram**
 
-![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational One-to-One Transformation.jpg)
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational One-to-One Transformation.jpg)
 
 **Relational Model**
 
@@ -376,7 +436,99 @@ ownedBy(vin: varchar(20), pid: int, since: date, primaryKey(vin),
 
 ```
 Person(pid: int, name: varchar(50), age: int, primaryKey(pid))
-Office(building: varchar(20), number: int, sqft: int, primarKey(building, number))
-Assigned(pid: int, building: varchar(20), number: int, since: date, primaryKey(pid), 
-	foreignKey(pid) references Person, foreignKey(building, number) references Office)
+Office(building: varchar(20), number: int, sqft: int, 
+	primarKey(building, number))
+Assigned(pid: int, building: varchar(20), number: int, since: date, 
+	primaryKey(pid), 
+	foreignKey(pid) references Person, 
+	foreignKey(building, number) references Office)
 ```
+
+### Weak Entity Sets
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational Weak Entity Sets Transformation.jpg)
+
+**Relational Model**
+
+* treat relationship and weak entity set as one relationship
+* primary key is from **identifying set and the partial key**
+
+```
+Employee(eId: int, firstName: varchar(20), lastName: varchar(20), 
+	primary key(eId))
+relativeOf(eId: int, firstName: varchar(20), age: int, 
+	primary key(eId, firstName), 
+	foreign key(eId) references Employee)
+```
+
+### Weak Entity Sets Related to Normal Entity Sets
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational Weak Entity Sets Related to Normal Entity Sets Transformation.jpg)
+
+**Relational Model**
+
+* treat relationship and weak entity set as one relationship
+* primary key is from **identifying sets and the partial key**
+
+```
+Employee(eId: int, firstName: varchar(20), lastName: varchar(20), 
+	primary key(eId))
+School(sName: varchar(20), primary key(sName))
+relativeOf(eId: int, firstName: varchar(20), age: int, 
+	primary key(eId, firstName), 
+	foreign key(eId) references Employee)
+attends(eId: int, firstName: varchar(20), sName: varchar(20), since: data,
+	primary key(eId, firstName, sName),
+	foreign key(ed, firstName) references of relativeOf,
+	foreign key(sName) references School)
+```
+
+### ISA Relationships
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational ISA Relationships Transformation.jpg)
+
+**Relational Model**
+
+```
+Person(ssn: char(11), name: varchar(50), primary key(ssn))
+Student(ssn: char(11), gpa: float, 
+	primary key(ssn), 
+	foreign key(ssn) references Person)
+Student(ssn: char(11), salary: float, 
+	primary key(ssn), 
+	foreign key(ssn) references Person)
+```
+
+### Aggregation
+
+**ER Diagram**
+
+![](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ER-Relational Transformations\ER-Relational Aggregation Transformation.jpg)
+
+**Relational Model**
+
+```
+Employee(ssn: char(11), name: varchar(50), primary key(ssn))
+Project(pid: int, startedOn: data, primary key(pid))
+Department(did: varchar(4), dname: varchar(20), primary key(did))
+Undertakes(pid: int, did: varchar(4), since: date, 
+	primary key(pid, did),
+	foreign key(pid) references Project,
+	foreign key(did) references Department)
+Monitors(ssn: char(11), pid: int, did: varchar(4), until: date,
+	primary key(ssn, pid, did),
+	foreign key(ssn) references Employee,
+	foreign key(pid, did) references Undertakes)
+```
+
+## Relational Design Principles
+
+* Reduce the number of tables
+* Avoid unnecessary redundancy
+* Reduce NULL values (memory use)
