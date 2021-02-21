@@ -142,10 +142,10 @@ ex. Employees work for Departments
 * **Assumptions**: Include in diagram to help determine decisions.
 * **Cardinality Notation**:
   * min / at least . . max / at most
-    * Partial Participation Constraint (Normal Line)  = 0 . . N
-    * Total Participation Constraint (Thick Line) = 1 . . N
-    * Partial Participation Constraint with Arrow (Normal Line with Arrow) = 0 . . 1
-    * Total Participation Constraint with Arrow (Thick Line with Arrow) = 1 . . 1
+    * Partial Participation Constraint (**Normal Line**)  = 0 . . N
+    * Total Participation Constraint (**Thick Line**) = 1 . . N
+    * Partial Participation Constraint with Arrow (**Normal Line with Arrow**) = 0 . . 1
+    * Total Participation Constraint with Arrow (**Thick Line with Arrow**) = 1 . . 1
   * Put on a Normal Line to relationship
   * Always use arrow notation unless it is necessary  to use cardinality notation
 
@@ -526,6 +526,84 @@ Monitors(ssn: char(11), pid: int, did: varchar(4), until: date,
 	foreign key(ssn) references Employee,
 	foreign key(pid, did) references Undertakes)
 ```
+
+### Merge Rule
+
+**IF**: 
+
+​	T(K, X, primary key(K))
+
+​	S(K2, Y, primary key(K2), foreign key (K2) references T)
+
+​	and **Y is not NULL** (because otherwise we don't know what tables an element belongs to)
+
+**THEN**:
+
+​	**Merge**: TS(K, X, Y, primary key(K))
+
+**Merge Priority**: Thick Arrow Side > Arrow Side > Normal Line
+
+* If there is both thick arrows or both normal arrows then merge either side
+
+* If there is a **thick arrow** need to add **NOT NULL to the foreign key**
+
+#### One-to-One
+
+![Merge Rule - One to One](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Merge Rule - One to One.jpg)
+
+```
+Office(building, number, sqFT,
+	primary key(building, number))
+Employee(eid, name, dob, building, number,
+	primary key(eid),
+	foreign key(building, number) references Office NOT NULL)
+```
+
+#### One-to-Many
+
+![Merge Rule - One to Many](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Merge Rule - One to Many.jpg)
+
+```
+A(Ka, c, primary key(Ka))
+B(Kb, d, primary key(kb)) - Part of the final schema
+R(Ka, Kb, p, q, 
+	primary key(Ka), 
+	foreign key(Ka) references A,
+	foreign key(Kb) references B)
+Merged: AR(Ka, c, Kb, p, q, 
+	primary key(Ka),
+	foreign key(Kb) references B) - Part of the final schema
+```
+
+#### ISA
+
+![Merge Rule - ISA](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\Merge Rule - ISA.jpg)
+
+```
+A(Ka, p, primary key(Ka))
+B(Ka, q, primary key(Ka), foreign key(Ka) references A)
+C(Ka, s, primary key(Ka), foreign key(Ka) references A)
+
+Merge AB: AB(Ka, p, q, primary key(Ka))
+Merge ABC: ABC(Ka, p, q, s, primary key(Ka))
+```
+
+Problems:
+
+* Can have many NULL Values
+* Not sure how to distinguish which fields are for the child sets 
+
+#### ISA - Collapse Down
+
+![ISA - Collapse Down](C:\Users\akshi\Documents\Computer Science\Java Practice\src\databases\Pictures for Notes\ISA - Collapse Down.jpg)
+
+```
+Dog(pid, name, primary key(pid))
+Cat(pid, name, primary key(pid))
+```
+
+* **Not a merge rule**
+* When ISA relationship is {disjoint, total}
 
 ## Relational Design Principles
 
