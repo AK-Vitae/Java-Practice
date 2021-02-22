@@ -9,6 +9,10 @@ The purpose of this project is to implement a little search engine to do two thi
 
 ## Project Classes
 
-This project includes several classes. 
+This project includes two classes. 
 
 Following is a high level description of each class (more information available in the respective .java file):
+
+**Occurrence**: This class encapsulates an occurrence of a keyword in a document.
+
+**LittleSearchEngine**: This class builds an index of keywords.
