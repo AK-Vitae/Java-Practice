@@ -611,7 +611,7 @@ Cat(pid, name, primary key(pid))
 * Avoid unnecessary redundancy
 * Reduce NULL values (memory use)
 
-## MySQL
+## SQL and MySQL
 
 ### General Information
 
@@ -714,4 +714,135 @@ Cat(pid, name, primary key(pid))
 | TIME(*fsp*)              | A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59' |
 | YEAR                     | A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000.<br/>MySQL 8.0 does not support year in two-digit format. |
 
-### 
+### Table (Relation) Commands
+
+* create table:
+
+  * General Case:
+
+    * ```sql
+      create table TABLENAME(
+      	field1 type,
+          field2 type,
+          ...,
+          primary key(fields),
+          foreign key (fields) references TABLENAME2(PRIMARY KEYS of TABLENAME2)
+      );
+      ```
+
+  * **One attribute** primary key:
+
+    * ```sql
+      create table TABLENAME(
+      	field1 type primary key,
+          ...,
+          field2 type,
+          foreign key (fields) references TABLENAME2(PRIMARY KEYS of TABLENAME2)
+      );
+      ```
+
+* alter table:
+
+  * Drop field:
+
+    * ```sql
+      alter table TABLENAME drop FIELD;
+      ```
+
+  * Add field:
+
+    * ```sql
+      alter table TABLENAME add FIELD type;
+      ```
+
+  * Change the primary keys or foreign keys of an already created table
+
+    * ```sql
+      alter table TABLENAME
+      add constraint primary key(field(s));
+      ```
+
+    * ```sql
+      alter table TABLENAME
+      add constraint foreign key(field(s)) 
+      	references TABLENAME2(PRIMARY KEYS of TABLENAME2);
+      ```
+
+* How to list all the tables
+
+  * ```sql
+    show tables;
+    ```
+
+* See table's schema
+
+  * ```sql
+    describe TABLENAME;
+    ```
+
+* Delete (drop) table if exists
+
+  * ```sql
+    drop table if exists TABLENAME;
+    ```
+
+* Delete (drop) table
+
+  * ```sql
+    drop table TABLENAME;
+    ```
+
+* Insert data into table
+
+  * When you only have **some values** for the **tuple**:
+
+    * ```sql
+      insert into TABLENAME(fields you want to insert into) values (values);
+      ```
+
+  * When you have **all** the **values** for the **tuple:**
+
+    * ```sql
+      insert into TABLENAME values 
+      	(_, _, _),
+      	(_, _, _),
+      	(_, _, _);
+      ```
+
+    * Order of the tuple is the order of the fields in the relation
+
+* **Delete certain data** from **table:**
+
+  * ```sql
+    delete from TABLENAME where CONDITION;
+    ```
+
+* **Update values** in the **tables:** 
+
+  * ```sql
+    update TABLENAME, TABLENAME2, ...
+    	set field1 = _, field2 = _,...
+    	where CONDITION;
+    ```
+
+### Queries
+
+* ```sql
+  select field1, field2, ...
+  from TABLENAME1, TABLENAME2, ...
+  where CONDITION
+  ```
+
+* Returns at table where fields names are column names
+
+#### Operators
+
+* Star or * operator
+
+  * represents everything
+
+  * ```sql
+    select *
+    from TABLENAME1
+    where CONDITION
+    ```
