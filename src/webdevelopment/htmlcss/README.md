@@ -19,3 +19,5 @@
     - Select (Dropdown)
 
 ## In the projects directory
+
+![Coffee Junkie](https://github.com/AK-Vitae/Java-Practice/tree/master/src/webdevelopment/htmlcss/projects/coffee)
