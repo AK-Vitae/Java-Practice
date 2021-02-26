@@ -1,6 +1,6 @@
-# HTML Notes
+# HTML/CSS Notes
 
-## In the basics directory
+## In the html directory
 
 - **image.html** - has details about headings, paragraphs, and images
 - **links.html and linksTwo.html** - have details about link navigation
