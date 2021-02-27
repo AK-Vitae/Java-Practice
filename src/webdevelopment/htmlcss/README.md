@@ -18,6 +18,26 @@
     - Checkboxes
     - Select (Dropdown)
 
+## In the css directory
+
+- **basicStyle.html**, **about.html**, and **syntax.css** - have details about: 
+  - inline, internal, and external styling
+    - Overriding: inline > internal > external
+  - CSS syntax:
+    - CSS rule: consists of a selector and a declaration block
+    - selectors: points to the HTML element you want to style (h1)
+    - declaration block: contains one or more declarations separated by semicolons
+    - declaration: includes a CSS property name and a value, separated by a colon
+- **selectors.html** and **selectors.css**: have details about:
+  - Element selectors
+  - Grouping selectors
+  - **id** selectors
+  - **class** selectors
+  - **div** and **span** elements
+  - Inheritance
+  - Last Rule and Specificity
+  - Universal selector (*)
+
 ## In the projects directory
 
-![Coffee Junkie](https://github.com/AK-Vitae/Java-Practice/tree/master/src/webdevelopment/htmlcss/projects/coffee)
+[Coffee Junkie](https://github.com/AK-Vitae/Java-Practice/tree/master/src/webdevelopment/htmlcss/projects/coffee)
