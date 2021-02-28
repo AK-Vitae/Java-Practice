@@ -1,0 +1,102 @@
+/* font-size, width, height, pixels */
+
+/* Absolute values */
+h1 {
+  font-size: 60px;
+  width: 200px;
+  height: 300px;
+  background: green;
+}
+
+/* Percent Values - Relative */
+.outer {
+  width: 500px;
+  height: 500px;
+  background: blue;
+}
+
+.inner {
+  width: 50%;
+  height: 50%;
+  background: red;
+}
+
+/* 
+em - Relative depends on parent 
+1em = 16px default browser style;
+1em = base value
+*/
+/* div {
+  font-size: 10px;
+} */
+
+.relative {
+  font-size: 2em;
+}
+
+.absolute {
+  font-size: 32px;
+}
+
+/*
+rem - Relative depends on root 
+1rem = 16px default browser style;
+*/
+/* html {
+  font-size: 32px;
+} */
+
+/* div {
+  font-size: 40px;
+} */
+
+.relative {
+  font-size: 2rem;
+}
+
+.absolute {
+  font-size: 64px;
+}
+
+/* 
+vh - height - percent of the screen
+vw - width - percent of the screen
+*/
+.banner {
+  height: 50vh;
+  background: red;
+}
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  background: blue;
+}
+
+/* default browser styles and google devTools*/
+
+h2 {
+  color: red;
+  font-size: 60px;
+}
+
+/* 
+calc()
+perform math operations + - * /
+mix and match values
+*/
+* {
+  margin: 0;
+}
+
+.navbar {
+  background: blue;
+  height: 100px;
+  color: white;
+  font-size: 3rem;
+}
+
+.banner {
+  background: red;
+  min-height: calc(100vh - 100px);
+}

@@ -1,5 +1,4 @@
 /* ELEMENT SELECTORS */
-/* 
 h1 {
   color: red;
 }
@@ -8,19 +7,17 @@ h2 {
 }
 p {
   color: grey;
-} */
+}
 
 /* GROUPING SELECTORS */
-/* 
 h1,
 h2 {
   color: red;
-} */
+}
 
 /* ID SELECTORS */
 /* in corresponding .html: element needs to have id attribute*/
 /* id should be unique */
-/* 
 #title {
   color: royalblue;
   background: black;
@@ -28,33 +25,30 @@ h2 {
 #subheading {
   color: green;
   background: grey;
-} */
+}
 
 /* CLASS SELECTORS */
 /* in corresponding .html: element needs to have class attribute*/
 /* classes can be reused */
-/* 
 .green {
   color: green;
 }
 .red {
   color: red;
   background: grey;
-} */
+}
 
 /* DIV SPAN */
-/* 
 div {
   color: red;
   background: grey;
 }
 span {
   text-transform: uppercase;
-} */
+}
 
 /* INHERITANCE */
 /* child element inherits styling from parent element unless explicitly changed */
-/* 
 body {
   font-family: monospace;
   line-height: 1.5em;
@@ -65,7 +59,7 @@ div {
 }
 h2 {
   color: blue;
-} */
+}
 
 /* LAST RULE AND SPECIFICITY * UNIVERSAL SELECTOR */
 p {

@@ -41,7 +41,16 @@
   - color and background properties
   - rgb
   - hex values
+- units.html and units.css - have details about:
+  - font-size, width, and height
+    - Absolute Values
+    - Percent Values
+    - em - Relative Values dependent on parent
+    - rem - Relative Values dependent on root
+  - vh and vw - percent of the screen
+  - default browser styles and google devTools
+  - calc() function
 
-## In the projects directory
+##  In the projects directory
 
 [Coffee Junkie](https://github.com/AK-Vitae/Java-Practice/tree/master/src/webdevelopment/htmlcss/projects/coffee)
