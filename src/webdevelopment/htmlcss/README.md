@@ -28,7 +28,7 @@
     - selectors: points to the HTML element you want to style (h1)
     - declaration block: contains one or more declarations separated by semicolons
     - declaration: includes a CSS property name and a value, separated by a colon
-- **selectors.html** and **selectors.css**: have details about:
+- **selectors.html** and **selectors.css** - have details about:
   - Element selectors
   - Grouping selectors
   - **id** selectors
@@ -37,6 +37,10 @@
   - Inheritance
   - Last Rule and Specificity
   - Universal selector (*)
+- **colors.html** and **colors.css** - have details about:
+  - color and background properties
+  - rgb
+  - hex values
 
 ## In the projects directory
 
