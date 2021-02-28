@@ -1,0 +1,98 @@
+/* font-size font-family */
+body {
+  font-family: Helvetica;
+}
+h1 {
+  font-family: Verdana;
+}
+
+/* 
+font-stack: to avoid any compatibility issues 
+serif, sans-serif, cursive, fantasy, monospace
+*/
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Google Fonts */
+body {
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+}
+
+/* font-weight font-style */
+body {
+  font-family: "Roboto", sans-serif;
+  /* font-style: italic; */
+}
+.main {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.subheading {
+  font-style: normal;
+}
+
+.one {
+  font-weight: 700;
+}
+
+.two {
+  font-weight: bolder;
+}
+
+/* text-align text-indent */
+body {
+  text-align: right;
+}
+
+.subheading {
+  font-style: normal;
+  text-align: center;
+}
+
+.one {
+  text-align: left;
+}
+
+.two {
+  text-align: left;
+  /* text-indent: 50px; */
+}
+
+/* 
+line-height
+letter-spacing
+word-spacing
+text-transform
+text-decoration
+*/
+
+a {
+  font-size: 40px;
+  text-decoration: none;
+}
+
+h1 {
+  text-transform: uppercase;
+  text-decoration: line-through;
+}
+
+.one {
+  line-height: 1.5em;
+}
+
+.two {
+  letter-spacing: 5px;
+  text-decoration: overline;
+}
+
+.three {
+  word-spacing: 20px;
+  text-decoration: underline;
+}

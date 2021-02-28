@@ -22,12 +22,12 @@
 
 - **basicStyle.html**, **about.html**, and **syntax.css** - have details about: 
   - inline, internal, and external styling
-    - Overriding: inline > internal > external
+    - **Overriding:** inline > internal > external
   - CSS syntax:
-    - CSS rule: consists of a selector and a declaration block
-    - selectors: points to the HTML element you want to style (h1)
-    - declaration block: contains one or more declarations separated by semicolons
-    - declaration: includes a CSS property name and a value, separated by a colon
+    - **CSS rule:** consists of a selector and a declaration block
+    - **selectors:** points to the HTML element you want to style (h1)
+    - **declaration block:** contains one or more declarations separated by semicolons
+    - **declaration:** includes a CSS **property name** and a **value**, separated by a colon
 - **selectors.html** and **selectors.css** - have details about:
   - Element selectors
   - Grouping selectors
@@ -41,15 +41,22 @@
   - color and background properties
   - rgb
   - hex values
-- units.html and units.css - have details about:
+- **units.html** and **units.css** - have details about:
   - font-size, width, and height
     - Absolute Values
     - Percent Values
     - em - Relative Values dependent on parent
     - rem - Relative Values dependent on root
-  - vh and vw - percent of the screen
+  - **vh** and **vw** - percent of the screen
   - default browser styles and google devTools
   - calc() function
+- typography.html and typography.css - have details about:
+  - font-size and font-family
+  - font-stack and generics
+  - Google Fonts
+  - font-weight and font-style
+  - text-align and text-indent
+  - line-height, letter-spacing, word-spacing, text-transform, and text decoration
 
 ##  In the projects directory
 
