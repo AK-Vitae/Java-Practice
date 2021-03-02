@@ -716,7 +716,7 @@ Cat(pid, name, primary key(pid))
 
 ### Table (Relation) Commands
 
-* create table:
+* **create table**:
 
   * General Case:
 
@@ -741,21 +741,21 @@ Cat(pid, name, primary key(pid))
       );
       ```
 
-* alter table:
+* **alter table**:
 
-  * Drop field:
+  * **Drop** field:
 
     * ```sql
       alter table TABLENAME drop FIELD;
       ```
 
-  * Add field:
+  * **Add** field:
 
     * ```sql
       alter table TABLENAME add FIELD type;
       ```
 
-  * Change the primary keys or foreign keys of an already created table
+  * **Change** the primary keys or foreign keys of an already created table
 
     * ```sql
       alter table TABLENAME
@@ -768,31 +768,31 @@ Cat(pid, name, primary key(pid))
       	references TABLENAME2(PRIMARY KEYS of TABLENAME2);
       ```
 
-* How to list all the tables
+* How to **list** all the tables
 
   * ```sql
     show tables;
     ```
 
-* See table's schema
+* **See table's schema**
 
   * ```sql
     describe TABLENAME;
     ```
 
-* Delete (drop) table if exists
+* **Delete (drop) table if exists**
 
   * ```sql
     drop table if exists TABLENAME;
     ```
 
-* Delete (drop) table
+* **Delete (drop) table**
 
   * ```sql
     drop table TABLENAME;
     ```
 
-* Insert data into table
+* **Insert** data into table
 
   * When you only have **some values** for the **tuple**:
 
@@ -837,12 +837,147 @@ Cat(pid, name, primary key(pid))
 
 #### Operators
 
-* Star or * operator
+* **Star or * operator**
 
   * represents everything
 
   * ```sql
-    select *
-    from TABLENAME1
-    where CONDITION
+    select * from TABLENAME1 where CONDITION
     ```
+
+* **Like operator**
+
+  * Used for string comparison (can use regex to match the string)
+
+  * ```sql
+    --Students where name starts w/H (0 or more characters after):
+    select name from students where name like 'H%';
+    --Students where name starts w/H (0 or more characters after):
+    select name from students where name like 'H%O';
+    --Students where name starts w/H then 4 characters:
+    select name from students where name like 'H___';
+    ```
+
+* **General Operators**
+
+  * For strings these operators will work in lexicographical order (ex. a > b returns true)
+  * **=, >, <, >=, <=, <>(not equal)**
+  * **in**
+    * Returns true if the value is inside the subquery
+  * **not in**
+    * Returns true if the value is not inside the subquery
+  * **exists**
+    * returns true if the subquery is not empty
+  * **and**
+  * **or**
+  * **not**
+
+* **Joining Tables**
+
+  * Gives the cartesian product (cross product) of the tables if no CONDITION is specified
+  * If condition is specified, the query will give you a table that contains tuples where that condition is true
+
+* **Set Operators**
+
+  * Returns a set (no duplicates)
+
+  * Attributes (fields) from the first query must match the attributes (fields) of the second query
+
+  * Union:
+
+    * ```sql
+      --Names of Students who have enrolled in cs or math courses
+      select s.name
+      	from students S, 
+      	enrolledin e, 
+      	courses c
+      where s.sid = e.sid 
+      	and e.cid = c.cid
+      	and c.dept = 'cs';
+      	
+      union
+      
+      select s.name
+      	from students S, 
+      	enrolledin e, 
+      	courses c
+      where s.sid = e.sid 
+      	and e.cid = c.cid
+      	and c.dept = 'math';
+      ```
+
+  * Intersect:
+
+    * Not supported in MySQL
+
+    * Solution: Subqueries
+
+      * ```sql
+        --Names of Students who have enrolled in cs and math courses:
+        select s.name
+        	from students s, 
+        	enrolledin e, 
+        	courses c
+        where s.sid = e.sid 
+        	and e.cid = c.cid
+        	and c.dept = 'cs';
+        	and s.sid in(
+            	select s.id
+        			from students s, 
+        			enrolledin e, 
+        			courses c
+        		where s.sid = e.sid 
+        			and e.cid = c.cid
+        			and c.dept = 'math'
+        		)
+        ;
+        ```
+
+  * Except:
+
+    * Not supported in MySQL
+
+    * Solution: Subqueries
+
+      * ```sql
+        --Students enrolled in 198:336 but not taking 198:323 (using except)
+        select s.name
+        	from Student s,
+        	enrolledin e
+        where s.sid = e.sid
+        	and e.cid = '198:336'
+        
+        except
+        
+        select s.name
+        	from Student s,
+        	enrolledin e
+        where s.sid = e.sid
+        	and e.cid = '198:323'
+        
+        --Students enrolled in 198:336 but not taking 198:323 (no except)
+        select s.name
+        	from students s, 
+        	enrolledin e 
+        where s.sid = e.sid
+        	and e.cid = '198:336'
+        	and s.sid not in(
+            	select s.id
+        			from students s, 
+        			enrolledin e
+        		where s.sid = e.sid 
+        			and e.cid = '198:323'
+        		)
+        ;
+        ```
+
+* **Subqueries:**
+
+  * X > any (subquery) 
+    * **Returns true** if **x** is **greater** than **at least one element** in the **subquery** 
+  * X > all (subquery)
+    * **Returns true** if **x** is **greater** than **all elements** in the **subquery**
+  * exists (subquery)
+    * **Returns true** if the **subquery** is **not empty** 
+  * not exists (subquery)
+    * **Returns true** if the **subquery** is **empty**
