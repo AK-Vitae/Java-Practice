@@ -57,6 +57,12 @@
   - **font-weight** and **font-style**
   - **text-align** and **text-indent**
   - **line-height**, **letter-spacing**, **word-spacing**, **text-transform**, and **text decoration**
+- **boxmodel.html** and **boxmodel.css** - have details about:
+  - **padding**
+  - **margin**
+  - **border**
+  - **outline**
+  - **offset**
 
 ##  In the projects directory
 
