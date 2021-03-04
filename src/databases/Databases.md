@@ -716,6 +716,15 @@ Cat(pid, name, primary key(pid))
 
 ### Table (Relation) Commands
 
+Tables referenced in examples:
+
+| Students | Enrolledin | Courses |
+| -------- | ---------- | ------- |
+| sid      | sid        | cid     |
+| name     | cid        | name    |
+| age      | grade      | dept    |
+| gpa      |            |         |
+
 * **create table**:
 
   * General Case:
@@ -825,6 +834,17 @@ Cat(pid, name, primary key(pid))
     	where CONDITION;
     ```
 
+* **Alias**
+
+  * Used to rename a certain table/fields used in a query
+
+  * Syntax:
+
+    * ```sql
+      tableName/fieldName as ALIASNAME
+      tableName/fieldName ALIASNAME
+      ```
+
 ### Queries
 
 * ```sql
@@ -893,7 +913,7 @@ Cat(pid, name, primary key(pid))
       	courses c
       where s.sid = e.sid 
       	and e.cid = c.cid
-      	and c.dept = 'cs';
+      	and c.dept = 'cs'
       	
       union
       
@@ -920,7 +940,7 @@ Cat(pid, name, primary key(pid))
         	courses c
         where s.sid = e.sid 
         	and e.cid = c.cid
-        	and c.dept = 'cs';
+        	and c.dept = 'cs'
         	and s.sid in(
             	select s.id
         			from students s, 
@@ -973,6 +993,9 @@ Cat(pid, name, primary key(pid))
 
 * **Subqueries:**
 
+  * X =
+  * X in
+  * X not in
   * X > any (subquery) 
     * **Returns true** if **x** is **greater** than **at least one element** in the **subquery** 
   * X > all (subquery)
@@ -981,3 +1004,54 @@ Cat(pid, name, primary key(pid))
     * **Returns true** if the **subquery** is **not empty** 
   * not exists (subquery)
     * **Returns true** if the **subquery** is **empty**
+
+  ```sql
+  --Name of students not enrolled in 198:111 (Simple Way)
+  select s.name
+  from students s
+  where s.side not in (
+      select e.sid
+      from enrolledin e
+      where e.cid = "198:11"
+  )
+  order by s.name desc; -- asc/desc
+  
+  --Name of students not enrolled in 198:111 (CORRELATED SUBQUERY)
+  select s.name
+  from students s
+  where not exists (
+      select *
+      from enrolledin e
+      where e.sid = s.side 
+      	and e.cid = "198:11"
+  )
+  order by s.name asc; -- asc/desc
+  
+  --Find name of students whose gpa is greater than someone called Horatio
+  select s.name
+  from students s
+  where s.gpa > any(
+  	select s.gpa
+      from students s
+      where name = "Horatio"
+  );
+  ```
+
+* **Distinct**
+
+  * Gets **rid of duplicates**
+
+  * Affects the entire tuple (gives you query that all the fields are unique)
+
+  * ```sql
+    --Names of students enrolled in CS courses. No duplicates
+    select distinct s.name
+    from students s,
+    	enrolledin e,
+    	courses c
+    where s.sid = e.sid
+    	and e.cid = c.cid
+    	and c.dept = "cs";
+    ```
+
+  
