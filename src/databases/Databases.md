@@ -603,7 +603,7 @@ Cat(pid, name, primary key(pid))
 ```
 
 * **Not a merge rule**
-* When ISA relationship is {disjoint, total}
+* When ISA relationship is {disjoint, complete}
 
 ## Relational Design Principles
 
@@ -1054,4 +1054,102 @@ Tables referenced in examples:
     	and c.dept = "cs";
     ```
 
-  
+* **Aggregate Operators**:
+
+  * **Count**
+
+    * Counts the number if tuples where the field is not null
+    * Syntax:
+      * **count**(*)
+      * **count**(field) 
+
+  * **Sum**
+
+    * Sums all the particular field
+    * Syntax:
+      * **sum**(field)
+
+  * **Max**
+
+    * max of that particular field
+
+    * Syntax:
+
+      * **max**(field)
+
+    * ```sql
+      --Find maximum age of students
+      select max(age) from students;
+      ```
+
+  * **Min**
+
+    * min of that particular field
+
+    * Syntax:
+
+      * **min**(field)
+
+    * ```sql
+      --Find minimum gpa of students
+      select min(gpa) from students;
+      ```
+
+  * **Avg**
+
+    * the avg of that particular field
+    * Syntax:
+      * **avg**(field)
+
+  * **Group by**
+
+    * Often used with aggregate operators
+
+    * Syntax:
+
+      * **group by**(field(s))
+
+    * ```
+      t1    Find the sum of y's for each a
+      x|y   SOLUTION:
+      ---   
+      a|1   select x, sum(y)
+      a|3   from t1
+      a|2   group by x;
+      ---
+      b|4
+      b|1
+      ---
+      c|5
+      c|2
+      c|3
+      ```
+
+    * ```sql
+      --Number of courses offered by each department
+      select c.dept, 
+      	count(*)
+      from courses c
+      group by c.dept;
+      ```
+
+    * ```sql
+      --Find average age of students enrolled in each course
+      select e.cid, 
+      	avg(s.age)
+      from students s, 
+      	enrolledin e
+      where s.sid = e.sid
+      group by c.cid;
+      ```
+
+    * ```sql
+      --Find name of students with max gpa
+      select s.name
+      from students s
+      where s.gpa = (
+      	select max(gpa)
+          from students
+      );
+      ```
+

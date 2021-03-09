@@ -45,18 +45,18 @@
   - font-size, width, and height
     - Absolute Values
     - Percent Values
-    - em - Relative Values dependent on parent
-    - rem - Relative Values dependent on root
+    - **em** - Relative Values dependent on parent
+    - **rem** - Relative Values dependent on root
   - **vh** and **vw** - percent of the screen
   - default browser styles and google devTools
   - calc() function
-- typography.html and typography.css - have details about:
-  - font-size and font-family
-  - font-stack and generics
+- t**ypography.html** and **typography.css** - have details about:
+  - **font-size** and **font-family**
+  - **font-stack** and generics
   - Google Fonts
-  - font-weight and font-style
-  - text-align and text-indent
-  - line-height, letter-spacing, word-spacing, text-transform, and text decoration
+  - **font-weight** and **font-style**
+  - **text-align** and **text-indent**
+  - **line-height**, **letter-spacing**, **word-spacing**, **text-transform**, and **text decoration**
 
 ##  In the projects directory
 
